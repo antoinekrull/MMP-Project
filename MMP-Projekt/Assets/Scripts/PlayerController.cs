@@ -25,12 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get movement input from arrow keys or wasd
         horizontal = Input.GetAxisRaw("Horizontal");    // -1 for left or 1 for right 
-        vertical = Input.GetAxisRaw("Vertical");    // -1 for down or 1 for up
-        if (Input.GetKey(KeyCode.Space)) // Listen for attack button input
-        {
-            anim.SetBool("isAttack", true);     // Change animation state to "Combat"
-            canMove = false;    // Disable player movement - player should be moving while attacking
-        }        
+        vertical = Input.GetAxisRaw("Vertical"); // -1 for down or 1 for up
         movementDirection = new Vector2(horizontal, vertical).normalized;   // Normalize vector, so that magnitude stays 1 while moving diagonally        
         Animate();
     }
@@ -43,6 +38,11 @@ public class PlayerController : MonoBehaviour
     // Adjust animation state
     private void Animate()
     {
+        if (Input.GetKey(KeyCode.Space)) // Listen for attack button input
+        {
+            anim.SetBool("isAttack", true);     // Change animation state to "Combat"
+            canMove = false;    // Disable player movement - player should be moving while attacking
+        } 
         if (movementDirection != Vector2.zero && canMove)
         {     
             anim.SetFloat("x", horizontal);
