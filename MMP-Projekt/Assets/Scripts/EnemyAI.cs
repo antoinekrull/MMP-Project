@@ -6,10 +6,13 @@ using System;
 
 public class EnemyAI : MonoBehaviour
 {
+
+    public float health, maxHealth = 3f;
+    public static event Action<EnemyAI> OnEnemyKilled;
+
     public float speed;
     public float checkRadius;
     public float attackRadius;
-
 
     public bool shouldRotate;
 
@@ -35,7 +38,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        anim.SetBool("IsRunning", isInChaseRange);  //fängt an zu laufen, wenn in ChaseRaius von Player
+        anim.SetBool("IsRunning", isInChaseRange);  //fï¿½ngt an zu laufen, wenn in ChaseRaius von Player
 
         isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsPlayer);    //wenn player in checkradius, setzt bool auf true
         isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, whatIsPlayer);  //same nur attackradius
@@ -45,7 +48,7 @@ public class EnemyAI : MonoBehaviour
         if (shouldRotate)
         {
 
-
+            
             anim.SetFloat("X", movement.x);
             anim.SetFloat("Y", movement.y);
         }
@@ -73,6 +76,14 @@ public class EnemyAI : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
     }
     */
+
+    public void TakeDamage(float damageAmount) {
+        health -= damageAmount;
+        if(healt <= 0) {
+            Destroy(gameObject)
+            OnEnemyKilled?.Invoke(this)
+        }
+    }
 
     //RandomWalk
     private void WalkRandom()
