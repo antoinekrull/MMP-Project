@@ -13,14 +13,8 @@ public class GlobalOptions
     private static readonly GlobalOptions _instance = new GlobalOptions();
 
     public static GlobalOptions GetInstance()
-    {   
-        if(_instance == null) {
-            _instance = new GlobalOptions();
-            return _instance;
-        }
-        else {
-            return _instance;
-        }
+    {
+        return _instance;
     }
 
     private static bool isNormalDifficulty = true;

@@ -8,6 +8,7 @@ public class StartMenu : MonoBehaviour
 {
     // needs a relocation to a place that is better suited for global variables then this script
     public static bool isNormalDifficulty = true;
+    private GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
     public void PlayGame()
     {
@@ -21,6 +22,7 @@ public class StartMenu : MonoBehaviour
 
     public void DifficultySelector()
     {
-        isNormalDifficulty = isNormalDifficulty ? false : true;
+        globalOptions.setDifficulty(!globalOptions.getDifficulty());
+        Debug.Log(globalOptions.getDifficulty());
     }
 }
