@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class EnemyAI : MonoBehaviour
 {
@@ -17,10 +19,12 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private Vector2 movement;
-    public Vector3 dir;
+    private float horizontal;
+    private float vertical;
 
     private bool isInChaseRange;
     private bool isInAttackRange;
+
 
     private void Start()
     {
@@ -31,17 +35,18 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        anim.SetBool("IsRunning", isInChaseRange);
+        anim.SetBool("IsRunning", isInChaseRange);  //fängt an zu laufen, wenn in ChaseRaius von Player
 
-        isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsPlayer);
-        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, whatIsPlayer);
+        isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsPlayer);    //wenn player in checkradius, setzt bool auf true
+        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, whatIsPlayer);  //same nur attackradius
 
         movement = (target.position - transform.position).normalized;
         //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
-        if(shouldRotate)
+        if (shouldRotate)
         {
-            anim.SetFloat("X",movement.x);
+
+
+            anim.SetFloat("X", movement.x);
             anim.SetFloat("Y", movement.y);
         }
     }
@@ -50,11 +55,16 @@ public class EnemyAI : MonoBehaviour
     {
         if(isInChaseRange && !isInAttackRange)
         {
-            rb.MovePosition((Vector2)transform.position + (movement * speed * Time.deltaTime));
+            rb.MovePosition((Vector2)transform.position + (speed * Time.deltaTime * movement));
         }
-        if(isInAttackRange)
+        if (isInAttackRange)
         {
             rb.velocity = Vector2.zero;
+        }
+        if (!isInAttackRange && !isInChaseRange )
+        {
+
+            WalkRandom();
         }
     }
 
@@ -63,4 +73,30 @@ public class EnemyAI : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
     }
     */
+
+    //RandomWalk
+    private void WalkRandom()
+    {
+
+        horizontal = DirRandom();
+        vertical = DirRandom();
+        movement = new Vector2(horizontal, vertical).normalized;
+        
+        rb.velocity = movement * speed;
+
+    }
+
+    private float DirRandom()
+    {
+        System.Random rand = new System.Random();
+        double min = -1;
+        double max = 1;
+        double range = max - min;
+        
+        double sample = rand.NextDouble();
+        double scaled = (sample * range) + min;
+        float f = (float)scaled;
+        return f;
+
+    }
 }
