@@ -61,11 +61,11 @@ public class EnemyAI : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
-        if (!isInAttackRange && !isInChaseRange )
+        /*if (!isInAttackRange && !isInChaseRange ) save for later
         {
 
             WalkRandom();
-        }
+        }*/
     }
 
     /*private void MoveCharacter(Vector2 dir)
