@@ -23,6 +23,5 @@ public class StartMenu : MonoBehaviour
     public void DifficultySelector()
     {
         globalOptions.setDifficulty(!globalOptions.getDifficulty());
-        Debug.Log(globalOptions.getDifficulty());
     }
 }
