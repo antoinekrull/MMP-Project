@@ -10,16 +10,12 @@ public class SpawnController : MonoBehaviour
     public EnemyAI enemy;
     public List<EnemyAI> enemies = new List<EnemyAI>();
 
-
     Wave currentWave;
     int currentWaveNumber;
     int enemiesRemainingToSpawn;
     int nextSpawnTime;
 
-    private SpawnController()
-    {
-
-    }
+    private SpawnController() {}
 
     private void OnEnable() 
     {
@@ -56,6 +52,9 @@ public class SpawnController : MonoBehaviour
     {
         if(enemies.Remove(enemy))
         {
+            if(enemies.Count == 0) {
+                nextWave();
+            }
             Debug.Log("Enemy killed");
         }
     }
