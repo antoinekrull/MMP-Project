@@ -7,12 +7,13 @@ public class SpawnController : MonoBehaviour
 
     public Wave[] waves;
     //Enemy is a dummy class atm, waiting for a real class by @Leon
-    public Enemy enemy;
+    public EnemyAI enemy;
 
     Wave currentWave;
     int currentWaveNumber;
     int enemiesRemainingToSpawn;
     int nextSpawnTime;
+    GameManager manager = GameManager.GetInstance();
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +26,20 @@ public class SpawnController : MonoBehaviour
     {
         if (enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime)
         {
-            Enemy spawnedEnemy = Instantiate(enemy, Vector2.zero, Quaterion.identity) as Enemy;
+            EnemyAI spawnedEnemy = Instantiate(enemy, Vector2.zero, Quaternion.identity) as EnemyAI;
 
         }
+    }
+
+    void OnEnemyDeath()
+    {
+
     }
 
     void nextWave()
     {
         currentWaveNumber++;
-        if(currentWaveNumber - 1 < waves.length)
+        if(currentWaveNumber - 1 < waves.Length)
         {
             currentWave = waves[currentWaveNumber - 1];
             enemiesRemainingToSpawn = currentWave.enemyCount;

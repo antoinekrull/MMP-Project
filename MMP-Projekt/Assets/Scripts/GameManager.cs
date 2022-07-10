@@ -6,7 +6,18 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     List<EnemyAI> enemies = new List<EnemyAI>();
-    
+    private static readonly GameManager _instance = new GameManager();
+
+    private GameManager()
+    {
+
+    }
+
+    public GameManager GetInstance()
+    {
+        return _instance;
+    }
+
     private void OnEnable() 
     {
         EnemyAI.OnEnemyKilled += HandleEnemyDefeated;
