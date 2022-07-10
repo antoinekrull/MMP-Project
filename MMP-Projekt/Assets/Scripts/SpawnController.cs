@@ -21,7 +21,7 @@ public class SpawnController : MonoBehaviour
 
     }
 
-    public SpawnController GetInstance()
+    public static SpawnController GetInstance()
     {
         return _instance;
     }
@@ -37,7 +37,7 @@ public class SpawnController : MonoBehaviour
         if (enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime)
         {
             EnemyAI spawnedEnemy = Instantiate(enemy, Vector2.zero, Quaternion.identity) as EnemyAI;
-
+            enemiesRemainingToSpawn--;
         }
     }
 
