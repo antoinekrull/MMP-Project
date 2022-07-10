@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -68,7 +68,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -7617,8 +7617,8 @@ TextureImporter:
       beach_tileset_156: -1180508235
       beach_tileset_299: 326256971
       beach_tileset_227: 433561884
-      beach_tileset_304: -1176024395
       beach_tileset_343: 229320786
+      beach_tileset_304: -1176024395
       beach_tileset_31: -385275441
       beach_tileset_62: -1438016647
       beach_tileset_28: 1643803352
@@ -7659,8 +7659,8 @@ TextureImporter:
       beach_tileset_95: 2075607574
       beach_tileset_338: -442808062
       beach_tileset_82: -1892194269
-      beach_tileset_128: -158849314
       beach_tileset_191: 1235703573
+      beach_tileset_128: -158849314
       beach_tileset_27: 654626690
       beach_tileset_49: -799192858
       beach_tileset_17: 1855972797
@@ -7821,7 +7821,7 @@ TextureImporter:
       beach_tileset_98: 1524830734
       beach_tileset_345: -1727465905
       beach_tileset_250: 1922788656
-      beach_tileset_334: 1316048783
+      beach_tileset_352: 1312870100
       beach_tileset_210: 1323151742
       beach_tileset_259: -1919229251
       beach_tileset_24: 970958179
@@ -7829,7 +7829,7 @@ TextureImporter:
       beach_tileset_247: 2117489058
       beach_tileset_90: 245235258
       beach_tileset_280: 1023438093
-      beach_tileset_352: 1312870100
+      beach_tileset_334: 1316048783
       beach_tileset_16: 1904994924
       beach_tileset_33: 310043019
       beach_tileset_14: -938863227
@@ -7847,8 +7847,8 @@ TextureImporter:
       beach_tileset_143: -342972242
       beach_tileset_136: 1079788056
       beach_tileset_40: 79684543
-      beach_tileset_113: 2077062059
       beach_tileset_288: 586112579
+      beach_tileset_113: 2077062059
       beach_tileset_167: 1059307298
       beach_tileset_223: 1469580665
       beach_tileset_42: 367578564
@@ -7865,8 +7865,8 @@ TextureImporter:
       beach_tileset_115: 631673358
       beach_tileset_265: -707325103
       beach_tileset_146: -1908538439
-      beach_tileset_150: 1191787042
       beach_tileset_347: 1803007415
+      beach_tileset_150: 1191787042
       beach_tileset_81: 1147935120
       beach_tileset_9: -600410147
       beach_tileset_221: 758562828
