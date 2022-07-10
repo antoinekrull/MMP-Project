@@ -5,9 +5,10 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
 
+    private static readonly SpawnController _instance = new SpawnController();
     public Wave[] waves;
-    //Enemy is a dummy class atm, waiting for a real class by @Leon
     public EnemyAI enemy;
+
 
     Wave currentWave;
     int currentWaveNumber;
@@ -15,6 +16,15 @@ public class SpawnController : MonoBehaviour
     int nextSpawnTime;
     GameManager manager = GameManager.GetInstance();
 
+    private SpawnController()
+    {
+
+    }
+
+    public SpawnController GetInstance()
+    {
+        return _instance;
+    }
     // Start is called before the first frame update
     void Start()
     {
