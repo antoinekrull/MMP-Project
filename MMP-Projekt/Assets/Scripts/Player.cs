@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -40,6 +41,16 @@ public class Player : MonoBehaviour
         {
             // Make this thing move!
             transform.Translate(moveDelta.x * Time.deltaTime*2, 0, 0);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) 
+    {
+        Debug.Log("collision");
+        if(collision.gameObject.TryGetComponent<EnemyAI>(out EnemyAI enemyComponent))
+        {
+            Debug.Log("EnemyAI hit");
+            enemyComponent.TakeDamage(1);
         }
     }
 }

@@ -31,6 +31,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        health = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
@@ -47,8 +48,6 @@ public class EnemyAI : MonoBehaviour
         //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         if (shouldRotate)
         {
-
-            
             anim.SetFloat("X", movement.x);
             anim.SetFloat("Y", movement.y);
         }
@@ -78,10 +77,11 @@ public class EnemyAI : MonoBehaviour
     */
 
     public void TakeDamage(float damageAmount) {
+        Debug.Log("Damage taken");
         health -= damageAmount;
-        if(healt <= 0) {
-            Destroy(gameObject)
-            OnEnemyKilled?.Invoke(this)
+        if(health <= 0) {
+            Destroy(gameObject);
+            OnEnemyKilled?.Invoke(this);
         }
     }
 
