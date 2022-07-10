@@ -32,12 +32,14 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = canMove ? movementDirection * runSpeed : Vector2.zero; // Move the player gameobject - if allowed
+        // Move the player gameobject - if allowed
+        rb.velocity = canMove ? movementDirection * runSpeed : Vector2.zero; // by using force
+        // rb.MovePosition((Vector2)transform.position + Time.deltaTime * runSpeed * movementDirection); // by using positioning
     }
 
     // Adjust animation state
     private void Animate()
-    {
+    {        
         if (Input.GetKey(KeyCode.Space)) // Listen for attack button input
         {
             anim.SetBool("isAttack", true);     // Change animation state to "Combat"
