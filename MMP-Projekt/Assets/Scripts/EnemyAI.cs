@@ -7,7 +7,7 @@ using System;
 public class EnemyAI : MonoBehaviour
 {
 
-    public float health, maxHealth = 3f;
+    public int health, maxHealth = 3;
     public static event Action<EnemyAI> OnEnemyKilled;
 
     public float speed;
@@ -72,31 +72,27 @@ public class EnemyAI : MonoBehaviour
         }*/
     }
 
-    private void AnimateDamage()
-    {
-        // anim.SetTakeDamage(true);
-        // insert animation in Animator
-    }
-
     /*private void MoveCharacter(Vector2 dir)
     {
         rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
     }
     */
 
-    public void TakeDamage(float damageAmount) {
+    public void TakeDamage(int damageAmount) {
         health -= damageAmount;
-        if(health <= 0) {
-            AnimateDamage();
-            Destroy(gameObject);
-            OnEnemyKilled?.Invoke(this);
-        }
+        Debug.Log("Current health: " + health);
+    
+        anim.SetInteger("health", health);    
+    }
+
+    public void Die() {
+        Destroy(gameObject);
+        OnEnemyKilled?.Invoke(this);
     }
 
     //RandomWalk
     private void WalkRandom()
     {
-
         horizontal = DirRandom();
         vertical = DirRandom();
         movement = new Vector2(horizontal, vertical).normalized;
