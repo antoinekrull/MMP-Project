@@ -28,10 +28,12 @@ public class EnemyAI : MonoBehaviour
     private bool isInChaseRange;
     private bool isInAttackRange;
 
+    private BoxCollider2D boxCollider;
 
     private void Start()
     {
         health = maxHealth;
+        boxCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
@@ -70,6 +72,12 @@ public class EnemyAI : MonoBehaviour
         }*/
     }
 
+    private void AnimateDamage()
+    {
+        // anim.SetTakeDamage(true);
+        // insert animation in Animator
+    }
+
     /*private void MoveCharacter(Vector2 dir)
     {
         rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
@@ -77,9 +85,9 @@ public class EnemyAI : MonoBehaviour
     */
 
     public void TakeDamage(float damageAmount) {
-        Debug.Log("Damage taken");
         health -= damageAmount;
         if(health <= 0) {
+            AnimateDamage();
             Destroy(gameObject);
             OnEnemyKilled?.Invoke(this);
         }
@@ -94,7 +102,6 @@ public class EnemyAI : MonoBehaviour
         movement = new Vector2(horizontal, vertical).normalized;
         
         rb.velocity = movement * speed;
-
     }
 
     private float DirRandom()

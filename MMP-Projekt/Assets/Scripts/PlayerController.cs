@@ -57,4 +57,14 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isAttack", false); // Change animation state from "Combat" to "Movement"
         canMove = true;     // Enable player movement        
     }
+
+    void OnCollisionEnter2D(Collision2D collision) 
+    {
+        //now the enemies are getting killed by moving into them
+        //the weapon e.g. bow/arrow needs to be a standalone collision object so this can be checked within the arrow monobehaviour
+        if(collision.gameObject.TryGetComponent<EnemyAI>(out EnemyAI enemyComponent))
+        {
+            enemyComponent.TakeDamage(1);
+        }
+    }
 }

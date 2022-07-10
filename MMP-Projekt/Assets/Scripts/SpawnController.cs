@@ -8,17 +8,27 @@ public class SpawnController : MonoBehaviour
     private static readonly SpawnController _instance = new SpawnController();
     public Wave[] waves;
     public EnemyAI enemy;
+    public List<EnemyAI> enemies = new List<EnemyAI>();
 
 
     Wave currentWave;
     int currentWaveNumber;
     int enemiesRemainingToSpawn;
     int nextSpawnTime;
-    GameManager manager = GameManager.GetInstance();
 
     private SpawnController()
     {
 
+    }
+
+    private void OnEnable() 
+    {
+        EnemyAI.OnEnemyKilled += HandleEnemyDefeated;
+    }
+
+    private void OnDisable() 
+    {
+        EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;
     }
 
     public static SpawnController GetInstance()
@@ -37,13 +47,17 @@ public class SpawnController : MonoBehaviour
         if (enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime)
         {
             EnemyAI spawnedEnemy = Instantiate(enemy, Vector2.zero, Quaternion.identity) as EnemyAI;
+            enemies.Add(spawnedEnemy);
             enemiesRemainingToSpawn--;
         }
     }
 
-    void OnEnemyDeath()
+    void HandleEnemyDefeated(EnemyAI enemy) 
     {
-
+        if(enemies.Remove(enemy))
+        {
+            Debug.Log("Enemy killed");
+        }
     }
 
     void nextWave()

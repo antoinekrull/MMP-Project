@@ -5,7 +5,6 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    List<EnemyAI> enemies = new List<EnemyAI>();
     private static readonly GameManager _instance = new GameManager();
 
     private GameManager()
@@ -18,29 +17,9 @@ public class GameManager : MonoBehaviour
         return _instance;
     }
 
-    private void OnEnable() 
-    {
-        EnemyAI.OnEnemyKilled += HandleEnemyDefeated;
-    }
 
-    private void OnDisable() 
+    private void Update() 
     {
-        EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;
-    }
-
-    void HandleEnemyDefeated(EnemyAI enemy) 
-    {
-        if(enemies.Remove(enemy))
-        {
-            // update counter when enemy got defeated
-        }
-    }
-
-    private void Awake() 
-    {
-        enemies = GameObject
-                    .FindObjectsOfType<EnemyAI>()
-                    .ToList();
-        // update enemy counter text e.g.
+    
     }
 }
