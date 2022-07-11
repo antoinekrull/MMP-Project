@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementDirection;
     private float horizontal;
     private float vertical;
-    private bool canMove = true;    
+    private bool canMove = false;    
 
     [SerializeField] float runSpeed = 5.0f;
 
@@ -32,17 +32,24 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = canMove ? movementDirection * runSpeed : Vector2.zero; // Move the player gameobject - if allowed
+        // Move the player gameobject - if allowed
+        rb.velocity = canMove ? movementDirection * runSpeed : Vector2.zero; // by using force
+        // rb.MovePosition((Vector2)transform.position + Time.deltaTime * runSpeed * movementDirection); // by using positioning
     }
 
     // Adjust animation state
     private void Animate()
-    {
-        if (Input.GetKey(KeyCode.Space)) // Listen for attack button input
+    {        
+        if (Input.GetKey(KeyCode.L)) // Listen for attack button input
         {
-            anim.SetBool("isAttack", true);     // Change animation state to "Combat"
+            anim.SetBool("isAttackBow", true);     // Change animation state to "Combat"
             canMove = false;    // Disable player movement - player should be moving while attacking
-        } 
+        }
+        else if (Input.GetKey(KeyCode.K)) // Listen for attack button input
+        {
+            anim.SetBool("isAttackShovel", true);     // Change animation state to "Combat"
+            canMove = false;    // Disable player movement - player should be moving while attacking
+        }
         if (movementDirection != Vector2.zero && canMove)
         {     
             anim.SetFloat("x", horizontal);
@@ -54,7 +61,8 @@ public class PlayerController : MonoBehaviour
     // Method gets called by the last frame of the attack animation
     private void EndAttack()
     {
-        anim.SetBool("isAttack", false); // Change animation state from "Combat" to "Movement"
+        anim.SetBool("isAttackShovel", false); // Change animation state from "Combat" to "Movement"
+        anim.SetBool("isAttackBow", false); // Change animation state from "Combat" to "Movement"
         canMove = true;     // Enable player movement        
     }
 
