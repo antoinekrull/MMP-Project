@@ -1,0 +1,881 @@
+fileFormatVersion: 2
+guid: 08957bd04bafd4c4b8264f351b11b63f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 35
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: extended_shovel_attack_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e558e480d14b44ca183f1af848711091
+      internalID: 1129836290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb26a624197a24ba697a0a66050ed5bb
+      internalID: 2065621481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a7f2846b8ea248c09f1b5042e96b4fc
+      internalID: -457750206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85a3c8aded287462389af608b583a39f
+      internalID: -1584207918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a8ebd7eb02a42eea1dfcf9a8423621
+      internalID: -1942921218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_14
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1024
+        width: 64
+        height: 69
+      alignment: 9
+      pivot: {x: 0.5, y: 0.46376812}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29ecd94231d6412b989a2eeddf6bd99
+      internalID: 780487847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2282cbf38c54209831f085e273f089
+      internalID: -1662922294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_16
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a2947c5d6ba4ead9f1d1d917abda94
+      internalID: 1504769320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 495492321b2b244b68c467a481d4f8e3
+      internalID: 1836736723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0c73c5b7e8e4253829f10d2ba371f8
+      internalID: -178764323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_21
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9937379e7d73d453087178bc7a84b40b
+      internalID: 2100725829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_22
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 960
+        width: 61
+        height: 64
+      alignment: 9
+      pivot: {x: 0.52459013, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d0dcd751dfe249bbb5df2807817f7e5
+      internalID: 1969002149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_23
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 960
+        width: 60
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5833333, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33f9be1dac204301825a1e896c5c4cf
+      internalID: -713750520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_24
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 960
+        width: 68
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5735294, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1bd74a2b550d4410aa98722e6385f4e
+      internalID: 1193598911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_25
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 960
+        width: 67
+        height: 64
+      alignment: 9
+      pivot: {x: 0.52238804, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e625f12de1a46ea88020eb7bb72540
+      internalID: 1198480949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_26
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ea6e0212a014c4289f3b2c7f0234e7
+      internalID: 476297349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2d3e98285fa459f942f11577a1b8e5
+      internalID: -661608974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_30
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20bd12d56720d47a4890760b39b484af
+      internalID: -1152991989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_31
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a3e87df2bf6d4c69a5302a63efd41a9
+      internalID: -582692507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_32
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa044cf42e134ae18328b9a782a0dec
+      internalID: -638145001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_33
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 892
+        width: 64
+        height: 68
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5294118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e0d07eca7434a44b4ba58c270afd26
+      internalID: 94759080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_34
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 887
+        width: 64
+        height: 73
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56164384}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746642a9d588e4ee789ed416195bb318
+      internalID: 1847650148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_35
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 892
+        width: 64
+        height: 68
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5294118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ef8c7c2c62d45378b622cd36d9d900
+      internalID: 1460349840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_36
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b71f11d5b271342a88abd2860b9436ba
+      internalID: -674760660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a63e32ed13345898fdc16f2aff6072
+      internalID: 2122512414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_40
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cceebb10c57c44d719abe2287ff8296c
+      internalID: 1012564010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_41
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75fa425247afe48259659627c47161fc
+      internalID: -1710776574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_42
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 832
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.515625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc383495f55a4c41b61570f92ba322b
+      internalID: 6708482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 832
+        width: 67
+        height: 60
+      alignment: 9
+      pivot: {x: 0.47761193, y: 0.53333336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc41e81532da149dd960740ecb8cda28
+      internalID: -225627862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_44
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 832
+        width: 68
+        height: 55
+      alignment: 9
+      pivot: {x: 0.42647058, y: 0.58181816}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc32cab1bb174d569aed41b00a4bc0b
+      internalID: -702772512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_45
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 832
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.41666666, y: 0.53333336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aad8900095eb54f6ab00a52cda5a13d8
+      internalID: -1038620436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extended_shovel_attack_46
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 832
+        width: 61
+        height: 64
+      alignment: 9
+      pivot: {x: 0.47540984, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef25e3ee7a3354d8f88ce511bdc37da4
+      internalID: 1357684353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      extended_shovel_attack_10: 2065621481
+      extended_shovel_attack_6: -2090902870
+      extended_shovel_attack_7: -1563092320
+      extended_shovel_attack_46: 1357684353
+      extended_shovel_attack_74: -938220922
+      extended_shovel_attack_16: 1504769320
+      extended_shovel_attack_24: 1193598911
+      extended_shovel_attack_27: -2145738764
+      extended_shovel_attack_69: 742317351
+      extended_shovel_attack_19: 1836736723
+      extended_shovel_attack_51: -788687400
+      extended_shovel_attack_13: -1942921218
+      extended_shovel_attack_67: 1697724578
+      extended_shovel_attack_66: 1015824609
+      extended_shovel_attack_5: -861932643
+      extended_shovel_attack_39: 2122512414
+      extended_shovel_attack_58: 1298574866
+      extended_shovel_attack_55: 228477189
+      extended_shovel_attack_73: -297036942
+      extended_shovel_attack_53: 774994029
+      extended_shovel_attack_42: 6708482
+      extended_shovel_attack_29: -661608974
+      extended_shovel_attack_22: 1969002149
+      extended_shovel_attack_25: 1198480949
+      extended_shovel_attack_54: 676432098
+      extended_shovel_attack_11: -457750206
+      extended_shovel_attack_59: 1406222369
+      extended_shovel_attack_3: -408190710
+      extended_shovel_attack_12: -1584207918
+      extended_shovel_attack_9: 1129836290
+      extended_shovel_attack_30: -1152991989
+      extended_shovel_attack_26: 476297349
+      extended_shovel_attack_20: -178764323
+      extended_shovel_attack_40: 1012564010
+      extended_shovel_attack_48: -529790246
+      extended_shovel_attack_61: 1781822715
+      extended_shovel_attack_72: 60873493
+      extended_shovel_attack_68: -996309588
+      extended_shovel_attack_28: 1428453926
+      extended_shovel_attack_31: -582692507
+      extended_shovel_attack_36: -674760660
+      extended_shovel_attack_63: -784529081
+      extended_shovel_attack_0: 745980168
+      extended_shovel_attack_15: -1662922294
+      extended_shovel_attack_33: 94759080
+      extended_shovel_attack_62: -849585435
+      extended_shovel_attack_32: -638145001
+      extended_shovel_attack_4: -1989907518
+      extended_shovel_attack_44: -702772512
+      extended_shovel_attack_47: -1747502139
+      extended_shovel_attack_49: 101914806
+      extended_shovel_attack_38: -2105205575
+      extended_shovel_attack_37: 2061758258
+      extended_shovel_attack_35: 1460349840
+      extended_shovel_attack_65: -439779204
+      extended_shovel_attack_71: 1465377452
+      extended_shovel_attack_18: -1348814122
+      extended_shovel_attack_64: 596767747
+      extended_shovel_attack_45: -1038620436
+      extended_shovel_attack_70: 629232644
+      extended_shovel_attack_57: -760962186
+      extended_shovel_attack_17: 827165324
+      extended_shovel_attack_56: -1852674727
+      extended_shovel_attack_34: 1847650148
+      extended_shovel_attack_2: -1183708831
+      extended_shovel_attack_43: -225627862
+      extended_shovel_attack_50: -560394490
+      extended_shovel_attack_52: 484372561
+      extended_shovel_attack_23: -713750520
+      extended_shovel_attack_14: 780487847
+      extended_shovel_attack_41: -1710776574
+      extended_shovel_attack_60: -1179599951
+      extended_shovel_attack_8: 2095914579
+      extended_shovel_attack_1: 526148002
+      extended_shovel_attack_21: 2100725829
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
