@@ -25,6 +25,8 @@ public class EnemyAI : MonoBehaviour
     private bool isInChaseRange;
     private bool isInAttackRange;
 
+    private bool isAttacking;
+
 
     private void Start()
     {
@@ -99,4 +101,6 @@ public class EnemyAI : MonoBehaviour
         return f;
 
     }
+
+
 }
