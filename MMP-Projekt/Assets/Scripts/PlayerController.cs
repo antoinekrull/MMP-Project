@@ -42,13 +42,13 @@ public class PlayerController : MonoBehaviour
     {        
         if (Input.GetKey(KeyCode.L)) // Listen for attack button input
         {
-            anim.SetBool("isAttackBow", true);     // Change animation state to "Combat"
-            canMove = false;    // Disable player movement - player should be moving while attacking
+            anim.SetBool("isAttackingBow", true);     // Change animation state to "Combat"
+            canMove = false;    // Disable player movement - player should not be moving while attacking
         }
         else if (Input.GetKey(KeyCode.K)) // Listen for attack button input
         {
-            anim.SetBool("isAttackShovel", true);     // Change animation state to "Combat"
-            canMove = false;    // Disable player movement - player should be moving while attacking
+            anim.SetBool("isAttackingShovel", true);     // Change animation state to "Combat"
+            canMove = false;    // Disable player movement - player should not be moving while attacking
         }
         if (movementDirection != Vector2.zero && canMove)
         {     
@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour
     // Method gets called by the last frame of the attack animation
     private void EndAttack()
     {
-        anim.SetBool("isAttackShovel", false); // Change animation state from "Combat" to "Movement"
-        anim.SetBool("isAttackBow", false); // Change animation state from "Combat" to "Movement"
+        anim.SetBool("isAttackingShovel", false); // Change animation state from "Combat" to "Movement"
+        anim.SetBool("isAttackingBow", false); // Change animation state from "Combat" to "Movement"
         canMove = true;     // Enable player movement        
     }
 
