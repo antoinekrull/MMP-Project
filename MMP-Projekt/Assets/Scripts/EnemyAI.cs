@@ -98,7 +98,7 @@ public class EnemyAI : MonoBehaviour
         OnEnemyKilled?.Invoke(this);
     }
 
-    //RandomWalk
+    // RandomWalk
     private void TakeAWalk()
     {
     // every few seconds we set a new random direction to walk into        
@@ -110,7 +110,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // Method gets called by  last frame of the attack animation
+    // Method gets called by last frame of the attack animation
     private void EndAttack()
     {
         anim.SetBool("isAttacking", false);
