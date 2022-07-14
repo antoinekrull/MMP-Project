@@ -6,12 +6,13 @@ using System;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float speed;
+
+    public int health, maxHealth = 3;
+    public static event Action<EnemyAI> OnEnemyKilled;
+
+    public float speed = 3.0f;
     public float checkRadius;
-    public float attackRadius;
-
-
-    public bool shouldRotate;
+    public float attackRadius;    
 
     public LayerMask whatIsPlayer;
 
@@ -19,88 +20,108 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private Vector2 movement;
-    private float horizontal;
-    private float vertical;
 
     private bool isInChaseRange;
     private bool isInAttackRange;
+    private bool canMove = true;
+
+    private float stopwatch = 0f;
+
+    private BoxCollider2D boxCollider;
+    private System.Random ran = new System.Random();
 
     private bool isAttacking;
 
 
     private void Start()
     {
+        health = maxHealth;
+        boxCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
     }
 
     private void Update()
-    {
-        anim.SetBool("IsRunning", isInChaseRange);  //fängt an zu laufen, wenn in ChaseRaius von Player
+    {        
+        isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsPlayer);    // Checks if Enemys should run after the player
+        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, whatIsPlayer);  // Checks if Enemys are close enough to attack the player
 
-        isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsPlayer);    //wenn player in checkradius, setzt bool auf true
-        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, whatIsPlayer);  //same nur attackradius
-
-        movement = (target.position - transform.position).normalized;
-        //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (shouldRotate)
+        if (!isInChaseRange && !isInAttackRange) // if enemy is too far from player to chase/attack:
+        {           
+            speed = 1f; // set speed slower because enemy is not chasing after player but taking a nice smooth walk
+            TakeAWalk();            
+        }
+        else
         {
+            speed = 3f; // set speed faster because enemy is running after player
+            movement = (target.position - transform.position).normalized; // get movement direction towards player
+        }
 
+        Animate();         
+    }
 
-            anim.SetFloat("X", movement.x);
-            anim.SetFloat("Y", movement.y);
+    // set animation state
+    private void Animate()
+    {   
+        if (isInAttackRange)
+        {
+            anim.SetBool("isAttacking", true);
+            canMove = false; // Disable player movement - player should not be moving while attacking
+        }
+
+        else if (canMove) // check canMove because the enemy can go back into ChaseRange while still doing an attack!
+        {
+            if (movement != Vector2.zero)
+            {
+                anim.SetFloat("x", movement.x);
+                anim.SetFloat("y", movement.y);
+            }
+            anim.SetFloat("speed", movement.magnitude); // toggle between idle and walking animation
         }
     }
 
     private void FixedUpdate()
+    {                          
+        rb.velocity = canMove ? movement * speed : Vector2.zero;              
+    }
+
+    public void TakeDamage(int damageAmount)
     {
-        if(isInChaseRange && !isInAttackRange)
+        health -= damageAmount;
+        Debug.Log("Current health: " + health);
+        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
+    }
+
+    // Method  gets called by last frame of death animation
+    public void Die()
+    {
+        Destroy(gameObject);
+        OnEnemyKilled?.Invoke(this);
+    }
+
+    // RandomWalk
+    private void TakeAWalk()
+    {
+    // every few seconds we set a new random direction to walk into        
+        stopwatch += Time.deltaTime;
+        if (stopwatch > ran.Next(2, 6))
         {
-            rb.MovePosition((Vector2)transform.position + (speed * Time.deltaTime * movement));
+            stopwatch = 0f;            
+            movement = new Vector2(ran.Next(-1, 2), ran.Next(-1, 2)).normalized;
         }
-        if (isInAttackRange)
-        {
-            rb.velocity = Vector2.zero;
-        }
-        /*if (!isInAttackRange && !isInChaseRange ) save for later
-        {
-
-            WalkRandom();
-        }*/
     }
 
-    /*private void MoveCharacter(Vector2 dir)
+    // Method gets called by last frame of the attack animation
+    private void EndAttack()
     {
-        rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
+        anim.SetBool("isAttacking", false);
+        canMove = true;
     }
-    */
-
-    //RandomWalk
-    private void WalkRandom()
-    {
-
-        horizontal = DirRandom();
-        vertical = DirRandom();
-        movement = new Vector2(horizontal, vertical).normalized;
-        
-        rb.velocity = movement * speed;
-
-    }
-
-    private float DirRandom()
-    {
-        System.Random rand = new System.Random();
-        double min = -1;
-        double max = 1;
-        double range = max - min;
-        
-        double sample = rand.NextDouble();
-        double scaled = (sample * range) + min;
-        float f = (float)scaled;
-        return f;
-
-    }
+<<<<<<< HEAD
 
 
 }
+=======
+}
+>>>>>>> main

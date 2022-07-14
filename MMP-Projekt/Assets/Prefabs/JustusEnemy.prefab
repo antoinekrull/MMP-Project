@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: -1485800397, guid: 828b686d7fc573040a5a2407e2985f84, type: 3}
+  m_Sprite: {fileID: 2020307491, guid: fdad65db252a747e5b21b2c0833b457c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.8285714, y: 1.8285714}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 1001700680145800203}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ffc3800772ee4a6439b26a77e40ee13c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4ff89a68dcec6469280d775cdce09aaa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f908a05ad3d2626488175607b3a8a371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 3
   speed: 3
   checkRadius: 5
   attackRadius: 1.5
@@ -127,7 +129,6 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  dir: {x: 0, y: 0, z: 0}
 --- !u!50 &1001700680145800207
 Rigidbody2D:
   serializedVersion: 4
