@@ -47,12 +47,14 @@ public class EnemyAI : MonoBehaviour
 
         if (!isInChaseRange && !isInAttackRange) // if enemy is too far from player to chase/attack:
         {           
-            speed = 1f; // set speed slower because enemy is not chasing after player but taking a nice smooth walk
+            speed = 0.6f; // set speed slower because enemy is not chasing after player but taking a nice smooth walk
+            anim.SetFloat("animationSpeed", 0.4f);
             TakeAWalk();            
         }
         else
         {
             speed = 3f; // set speed faster because enemy is running after player
+            anim.SetFloat("animationSpeed", 1f);
             movement = (target.position - transform.position).normalized; // get movement direction towards player
         }
 
