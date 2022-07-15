@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DeathMenu : MonoBehaviour
 {
-    int wavesSurvived;
+    public int wavesSurvived = 2;
 
     public void ReplayGame()
     {
