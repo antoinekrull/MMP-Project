@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool canMove = false;    
 
     [SerializeField] float runSpeed = 5.0f;
+    [SerializeField] private AudioSource bowSoundEffect;
 
     void Start()
     {
@@ -74,5 +75,11 @@ public class PlayerController : MonoBehaviour
         {
             enemyComponent.TakeDamage(1);
         }
+    }
+
+    private void PlayBowSound()
+    {
+        bowSoundEffect.Play();
+
     }
 }

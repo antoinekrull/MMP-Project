@@ -118,10 +118,10 @@ public class EnemyAI : MonoBehaviour
         anim.SetBool("isAttacking", false);
         canMove = true;
     }
-<<<<<<< HEAD
+
 
 
 }
-=======
-}
->>>>>>> main
+
+
+
