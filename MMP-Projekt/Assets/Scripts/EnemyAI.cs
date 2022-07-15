@@ -7,16 +7,17 @@ using System;
 public class EnemyAI : MonoBehaviour
 {
 
-    public int health, maxHealth = 3;
+    public int health, maxHealth = 1;
     public static event Action<EnemyAI> OnEnemyKilled;
+    public static event Action<EnemyAI> OnDamageTaken;
 
     public float speed = 3.0f;
     public float checkRadius;
     public float attackRadius;    
 
-    public LayerMask whatIsPlayer;
+    public LayerMask layer; // selectable layer mask
 
-    private Transform target;
+    private Transform target; // Punk Player
     private Rigidbody2D rb;
     private Animator anim;
     private Vector2 movement;
@@ -42,8 +43,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {        
-        isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsPlayer);    // Checks if Enemys should run after the player
-        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, whatIsPlayer);  // Checks if Enemys are close enough to attack the player
+        isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, layer);    // Checks if Enemys should run after the player
+        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, layer);  // Checks if Enemys are close enough to attack the player
 
         if (!isInChaseRange && !isInAttackRange) // if enemy is too far from player to chase/attack:
         {           
@@ -81,6 +82,16 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void CheckHitbox() 
+    {
+        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, layer); 
+        if(isInAttackRange)
+        {
+            OnDamageTaken.Invoke(this);
+            // take damage on PlayerController
+        }
+    }
+
     private void FixedUpdate()
     {                          
         rb.velocity = canMove ? movement * speed : Vector2.zero;              
@@ -89,6 +100,10 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
+        if(health <= 0)
+        {
+            Die();
+        }
         Debug.Log("Current health: " + health);
         anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
     }
