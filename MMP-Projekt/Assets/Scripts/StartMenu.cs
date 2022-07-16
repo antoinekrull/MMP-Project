@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    [SerializeField] public AudioSource buttonSound;
     public void PlayGame()
     {
         SceneManager.LoadScene("Scenes/LevelOne");
@@ -13,5 +14,10 @@ public class StartMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void PlayButtonSound()
+    {
+        buttonSound.Play();
     }
 }
