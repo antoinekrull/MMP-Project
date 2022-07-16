@@ -30,6 +30,12 @@ public class EnemyAI : MonoBehaviour
     private BoxCollider2D boxCollider;
     private System.Random ran = new System.Random();
 
+    private bool isAttacking;
+
+    [SerializeField] private AudioSource stepSoundEffect;
+    [SerializeField] private AudioSource hitSoundEffect;
+    
+
 
     private void Start()
     {
@@ -118,4 +124,18 @@ public class EnemyAI : MonoBehaviour
         anim.SetBool("isAttacking", false);
         canMove = true;
     }
+
+    private void PlayStepSound()
+    {
+        stepSoundEffect.Play();
+    }
+
+    private void PlayHitSound()
+    {
+        hitSoundEffect.Play();
+    }
+
 }
+
+
+

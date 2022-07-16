@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private bool canMove = false;    
 
     [SerializeField] float runSpeed = 5.0f;
+    [SerializeField] private AudioSource bowSoundEffect;
+    [SerializeField] private AudioSource stepSoundEffect;
+    [SerializeField] private AudioSource hitSoundEffect;
 
     void Start()
     {
@@ -26,7 +29,7 @@ public class PlayerController : MonoBehaviour
         // Get movement input from arrow keys or wasd
         horizontal = Input.GetAxisRaw("Horizontal");    // -1 for left or 1 for right 
         vertical = Input.GetAxisRaw("Vertical"); // -1 for down or 1 for up
-        movementDirection = new Vector2(horizontal, vertical).normalized;   // Normalize vector, so that magnitude stays 1 while moving diagonally        
+        movementDirection = new Vector2(horizontal, vertical).normalized;   // Normalize vector, so that magnitude stays 1 while moving diagonally
         Animate();
     }
 
@@ -74,5 +77,21 @@ public class PlayerController : MonoBehaviour
         {
             enemyComponent.TakeDamage(1);
         }
+    }
+
+    private void PlayBowSound()
+    {
+        bowSoundEffect.Play();
+
+    }
+
+    private void PlayStepSound()
+    {
+        stepSoundEffect.Play();
+    }
+
+    private void PlayHitSound()
+    {
+        hitSoundEffect.Play();
     }
 }
