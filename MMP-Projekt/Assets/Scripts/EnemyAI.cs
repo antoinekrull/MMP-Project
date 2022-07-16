@@ -32,6 +32,10 @@ public class EnemyAI : MonoBehaviour
 
     private bool isAttacking;
 
+    [SerializeField] private AudioSource stepSoundEffect;
+    [SerializeField] private AudioSource hitSoundEffect;
+    
+
 
     private void Start()
     {
@@ -119,7 +123,15 @@ public class EnemyAI : MonoBehaviour
         canMove = true;
     }
 
+    private void PlayStepSound()
+    {
+        stepSoundEffect.Play();
+    }
 
+    private void PlayHitSound()
+    {
+        hitSoundEffect.Play();
+    }
 
 }
 

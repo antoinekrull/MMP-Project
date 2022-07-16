@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float runSpeed = 5.0f;
     [SerializeField] private AudioSource bowSoundEffect;
     [SerializeField] private AudioSource stepSoundEffect;
+    [SerializeField] private AudioSource hitSoundEffect;
 
     void Start()
     {
@@ -87,5 +88,10 @@ public class PlayerController : MonoBehaviour
     private void PlayStepSound()
     {
         stepSoundEffect.Play();
+    }
+
+    private void PlayHitSound()
+    {
+        hitSoundEffect.Play();
     }
 }
