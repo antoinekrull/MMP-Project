@@ -77,7 +77,8 @@ public class SpawnController : MonoBehaviour
 
     void HandlePlayerDeath(PlayerController player)
     {
-        Debug.Log("Player is dead");
+        //insert tick methon if deathmenu is loaded too fast
+        SceneManager.LoadScene("Scenes/DeathMenu");
     }
 
     void nextWave()
