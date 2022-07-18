@@ -5,8 +5,7 @@ using UnityEngine;
 
 
 public class CameraMotor : MonoBehaviour
-{
-    
+{    
     public GameObject target;
     public Vector4 border = new Vector4(10, 10, -10, -10); // right - top - left - down
     private float x;
