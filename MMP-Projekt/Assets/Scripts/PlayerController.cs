@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private bool canMove = false;
 
-    [SerializeField] float runSpeed = 5.0f;    
+    [SerializeField] float runSpeed = 5.0f;
     [SerializeField] private AudioSource bowSoundEffect;
     [SerializeField] private AudioSource stepSoundEffect;
-    [SerializeField] private AudioSource hitSoundEffect;   
+    [SerializeField] private AudioSource hitSoundEffect;
 
     void Start()
     {
