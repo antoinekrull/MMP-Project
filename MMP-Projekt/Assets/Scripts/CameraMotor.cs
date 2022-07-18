@@ -13,7 +13,7 @@ public class CameraMotor : MonoBehaviour
     private float y;
 
     void LateUpdate()
-    {
+    {         
         if (target)
         {
             x = target.transform.position.x;
