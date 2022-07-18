@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour
     private void PlayBowSound()
     {
         bowSoundEffect.Play();
-
     }
 
     private void PlayStepSound()
