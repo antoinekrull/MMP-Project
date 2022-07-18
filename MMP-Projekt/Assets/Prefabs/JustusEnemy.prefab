@@ -125,7 +125,6 @@ MonoBehaviour:
   speed: 3
   checkRadius: 5
   attackRadius: 1.5
-  shouldRotate: 1
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -163,6 +162,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0000014033891, y: -0.7275203}
-  m_Size: {x: 0.55908537, y: 0.17823412}
+  m_Offset: {x: 0.0065666577, y: -0.8907909}
+  m_Size: {x: 0.687926, y: 0.6094672}
   m_Direction: 1

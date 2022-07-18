@@ -6,19 +6,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Animator anim;
+    private Animator anim;    
 
     private Vector2 movementDirection;
     private float horizontal;
     private float vertical;
     private bool canMove = false;    
 
-    [SerializeField] float runSpeed = 5.0f;
+    [SerializeField] float runSpeed = 5.0f;   
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();        
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");    // -1 for left or 1 for right 
         vertical = Input.GetAxisRaw("Vertical"); // -1 for down or 1 for up
         movementDirection = new Vector2(horizontal, vertical).normalized;   // Normalize vector, so that magnitude stays 1 while moving diagonally        
-        Animate();
+        Animate();        
     }
 
     void FixedUpdate()
