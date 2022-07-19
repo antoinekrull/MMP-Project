@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    public static event Action<PlayerController> OnPlayerDeath;
-    public static event Action<PlayerController> OnDamageTaken;
 
     private SpawnController spawnController = SpawnController.GetInstance();
 
@@ -17,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementDirection;
     private float horizontal;
     private float vertical;
-    private bool canMove = false;    
+    private bool canMove = false;
 
     [SerializeField] float runSpeed = 5.0f;
     [SerializeField] private AudioSource bowSoundEffect;
@@ -27,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();        
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -96,7 +94,6 @@ public class PlayerController : MonoBehaviour
     private void PlayBowSound()
     {
         bowSoundEffect.Play();
-
     }
 
     private void PlayStepSound()
