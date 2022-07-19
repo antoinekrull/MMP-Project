@@ -8,7 +8,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] public AudioSource buttonSound;
     public void PlayGame()
     {
-        SceneManager.LoadScene("Scenes/LevelOne");
+        SceneManager.LoadScene("Scenes/MapDesignOle");
     }
 
     public void QuitGame()

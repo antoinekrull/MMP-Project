@@ -10,7 +10,7 @@ public class DeathMenu : MonoBehaviour
 
     public void ReplayGame()
     {
-        SceneManager.LoadScene("Scenes/LevelOne");
+        SceneManager.LoadScene("Scenes/MapDesignOle");
     }
 
     public void QuitGame()
