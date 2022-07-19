@@ -22,16 +22,16 @@ public class SpawnController : MonoBehaviour
     {
         EnemyAI.OnEnemyKilled += HandleEnemyDefeated;
         EnemyAI.OnDamageTaken += HandleEnemyDamageTaken;
-        PlayerController.OnPlayerDeath += HandlePlayerDeath;
-        PlayerController.OnDamageTaken += HandlePlayerDamageTaken;
+        // PlayerController.OnPlayerDeath += HandlePlayerDeath;
+        // PlayerController.OnDamageTaken += HandlePlayerDamageTaken;
     }
 
     private void OnDisable() 
     {
         EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;
         EnemyAI.OnDamageTaken -= HandleEnemyDamageTaken;
-        PlayerController.OnPlayerDeath -= HandlePlayerDeath;
-        PlayerController.OnDamageTaken -= HandlePlayerDamageTaken;
+        // PlayerController.OnPlayerDeath -= HandlePlayerDeath;
+        // PlayerController.OnDamageTaken -= HandlePlayerDamageTaken;
     }
 
     public static SpawnController GetInstance()

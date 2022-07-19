@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
-        OnPlayerDeath?.Invoke(this);
+        // OnPlayerDeath?.Invoke(this);
     }
 
     private void PlayBowSound()
