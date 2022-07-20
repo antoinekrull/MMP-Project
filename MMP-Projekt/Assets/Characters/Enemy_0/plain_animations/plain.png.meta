@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 35
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -3884,8 +3884,8 @@ TextureImporter:
       plain_120: -1138919093
       plain_177: 918586450
       plain_53: -642337468
-      plain_20: -672423333
       plain_131: 234273661
+      plain_20: -672423333
       plain_87: 322489084
       plain_88: -1766996353
       plain_125: 1284973174
@@ -3935,8 +3935,8 @@ TextureImporter:
       plain_7: -548621397
       plain_78: 618255691
       plain_54: 605408953
-      plain_86: -257891110
       plain_94: 1171960205
+      plain_86: -257891110
       plain_147: -786762042
       plain_108: -1328722434
       plain_25: 2075645250
@@ -3971,12 +3971,12 @@ TextureImporter:
       plain_43: 1597750823
       plain_47: 145244513
       plain_35: -1933743802
-      plain_18: 1891829353
       plain_159: 1810262889
-      plain_99: -717062200
       plain_160: 1581213770
-      plain_80: 27493353
+      plain_99: -717062200
+      plain_18: 1891829353
       plain_96: 1777421400
+      plain_80: 27493353
       plain_8: 230885562
       plain_105: 1902592173
       plain_135: -1378857885

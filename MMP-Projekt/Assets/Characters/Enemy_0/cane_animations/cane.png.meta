@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 35
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -3983,13 +3983,13 @@ TextureImporter:
       cane_26: -625552620
       cane_49: -1695229502
       cane_32: -848363448
-      cane_63: 332377695
       cane_39: 618117514
+      cane_63: 332377695
+      cane_125: -588058757
       cane_23: -1121907892
       cane_65: -378069308
-      cane_101: -1944691472
       cane_126: -1682988750
-      cane_125: -588058757
+      cane_101: -1944691472
       cane_149: -2115394761
       cane_155: 230454318
       cane_103: 296686773
@@ -4008,8 +4008,8 @@ TextureImporter:
       cane_175: -1455936232
       cane_42: -1308060544
       cane_91: -1469367924
-      cane_152: -920359365
       cane_177: -1579978441
+      cane_152: -920359365
       cane_142: 102834503
       cane_52: -1911596184
       cane_164: -37451746
