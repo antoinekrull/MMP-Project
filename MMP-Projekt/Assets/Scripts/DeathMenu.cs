@@ -6,7 +6,14 @@ using UnityEngine.UI;
 
 public class DeathMenu : MonoBehaviour
 {
-    public int wavesSurvived = 2;
+    [SerializeField]
+    public Text wavesSurvived;
+    public string textValue;
+
+    public void Start()
+    {
+        
+    }
 
     public void ReplayGame()
     {
@@ -16,5 +23,10 @@ public class DeathMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Update()
+    {
+        wavesSurvived.text = textValue;
     }
 }
