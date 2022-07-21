@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SpawnController : MonoBehaviour
 {
@@ -16,22 +15,16 @@ public class SpawnController : MonoBehaviour
     int enemiesRemainingToSpawn;
     int nextSpawnTime;
 
-    private SpawnController() {}
+    private SpawnController() { }
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         EnemyAI.OnEnemyKilled += HandleEnemyDefeated;
-        EnemyAI.OnDamageTaken += HandleEnemyDamageTaken;
-        // PlayerController.OnPlayerDeath += HandlePlayerDeath;
-        // PlayerController.OnDamageTaken += HandlePlayerDamageTaken;
     }
 
-    private void OnDisable() 
+    private void OnDisable()
     {
         EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;
-        EnemyAI.OnDamageTaken -= HandleEnemyDamageTaken;
-        // PlayerController.OnPlayerDeath -= HandlePlayerDeath;
-        // PlayerController.OnDamageTaken -= HandlePlayerDamageTaken;
     }
 
     public static SpawnController GetInstance()
@@ -55,37 +48,22 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-    void HandleEnemyDamageTaken(EnemyAI enemy)
+    void HandleEnemyDefeated(EnemyAI enemy)
     {
-        enemy.TakeDamage(1);
-    }
-
-    void HandlePlayerDamageTaken(PlayerController player)
-    {
-        player.TakeDamage(1);
-    }
-
-    void HandleEnemyDefeated(EnemyAI enemy) 
-    {
-        if(enemies.Remove(enemy))
+        if (enemies.Remove(enemy))
         {
-            if(enemies.Count == 0) {
+            if (enemies.Count == 0)
+            {
                 nextWave();
             }
             Debug.Log("Enemy killed");
         }
     }
 
-    void HandlePlayerDeath(PlayerController player)
-    {
-        //insert tick methon if deathmenu is loaded too fast
-        SceneManager.LoadScene("Scenes/DeathMenu");
-    }
-
     void nextWave()
     {
         currentWaveNumber++;
-        if(currentWaveNumber - 1 < waves.Length)
+        if (currentWaveNumber - 1 < waves.Length)
         {
             currentWave = waves[currentWaveNumber - 1];
             enemiesRemainingToSpawn = currentWave.enemyCount;
