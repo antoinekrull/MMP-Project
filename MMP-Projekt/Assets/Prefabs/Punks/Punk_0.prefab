@@ -122,6 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 5
+  bowSoundEffect: {fileID: 0}
+  stepSoundEffect: {fileID: 0}
+  hitSoundEffect: {fileID: 0}
 --- !u!70 &3961371522404086719
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
