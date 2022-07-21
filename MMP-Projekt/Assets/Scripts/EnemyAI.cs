@@ -44,7 +44,7 @@ public class EnemyAI : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        target = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindWithTag("Player").transform;        
     }
 
     private void Update()
@@ -138,6 +138,11 @@ public class EnemyAI : MonoBehaviour
     {
         anim.SetBool("isAttacking", false);
         canMove = true;
+        if (movement != Vector2.zero)
+        {
+            anim.SetFloat("x", movement.x);
+            anim.SetFloat("y", movement.y);
+        }
     }
 
     private void PlayStepSound()
