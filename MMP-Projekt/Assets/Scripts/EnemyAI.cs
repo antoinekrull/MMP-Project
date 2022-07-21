@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        target = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindWithTag("Player").transform;        
     }
 
     private void Update()

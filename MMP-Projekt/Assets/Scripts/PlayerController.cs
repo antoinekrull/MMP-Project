@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Animator anim;    
+    private Animator anim;
+    private CircleCollider2D cc;
 
     private Vector2 movementDirection;
     private float horizontal;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        cc = GetComponent<CircleCollider2D>();
     }
 
     void Update()
@@ -76,6 +78,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.TryGetComponent<EnemyAI>(out EnemyAI enemyComponent))
         {
             enemyComponent.TakeDamage(1);
+            Debug.Log("Coll");
         }
     }
 
@@ -92,5 +95,6 @@ public class PlayerController : MonoBehaviour
     private void PlayHitSound()
     {
         hitSoundEffect.Play();
+        
     }
 }
