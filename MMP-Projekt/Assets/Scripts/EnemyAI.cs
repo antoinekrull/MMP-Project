@@ -123,6 +123,11 @@ public class EnemyAI : MonoBehaviour
     {
         anim.SetBool("isAttacking", false);
         canMove = true;
+        if (movement != Vector2.zero)
+        {
+            anim.SetFloat("x", movement.x);
+            anim.SetFloat("y", movement.y);
+        }
     }
 
     private void PlayStepSound()
