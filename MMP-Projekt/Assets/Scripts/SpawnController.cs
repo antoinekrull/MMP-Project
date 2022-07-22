@@ -11,7 +11,7 @@ public class SpawnController : MonoBehaviour
     public EnemyAI enemy;
     public List<EnemyAI> enemies = new List<EnemyAI>();
     GlobalOptions globalOptions = GlobalOptions.GetInstance();
-    
+
 
     Wave currentWave;
     int currentWaveNumber;
@@ -28,7 +28,7 @@ public class SpawnController : MonoBehaviour
 
     private void OnDisable()
     {
-        EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;   
+        EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;
         PlayerController.OnPlayerDeath -= HandlePlayerDeath;
     }
 
@@ -45,10 +45,10 @@ public class SpawnController : MonoBehaviour
 
     void SetWavesAndEnemies(bool isNormalDifficulty)
     {
-        
+
         if (isNormalDifficulty)
         {
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 waves[i] = new Wave(1, 5f);
             }
@@ -100,7 +100,7 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-    
+
     public class Wave
     {
         public int enemyCount;

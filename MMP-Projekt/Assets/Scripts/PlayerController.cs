@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
         canMove = true;     // Enable player movement        
     }
 
-    
+
     public void TakeDamage(int damageAmount)
     {
         Debug.Log("Punk got hit. Health: " + health);
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
             return;
-        }       
+        }
     }
 
     private void Die()
@@ -100,8 +100,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayBowSound()
-    {     
-        bowSoundEffect.Play();      
+    {
+        bowSoundEffect.Play();
         float x = anim.GetFloat("x");
         float y = anim.GetFloat("y");
         GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
