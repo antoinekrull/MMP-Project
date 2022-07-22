@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private bool canMove = false;
 
+    public GameObject arrowPrefab;
+
     [SerializeField] float runSpeed = 5.0f;
     [SerializeField] private AudioSource bowSoundEffect;
     [SerializeField] private AudioSource stepSoundEffect;
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.L)) // Listen for attack button input
         {
             anim.SetBool("isAttackingBow", true);     // Change animation state to "Combat"
-            canMove = false;    // Disable player movement - player should not be moving while attacking
+            canMove = false; // Disable player movement - player should not be moving while attacking          
         }
         else if (Input.GetKey(KeyCode.K)) // Listen for attack button input
         {
@@ -83,8 +85,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayBowSound()
-    {
-        bowSoundEffect.Play();
+    {     
+        bowSoundEffect.Play();      
+        float x = anim.GetFloat("x");
+        float y = anim.GetFloat("y");
+        GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+        arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(x * 7.0f, y * 7.0f);
+        arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(y, x) * Mathf.Rad2Deg);
     }
 
     private void PlayStepSound()
@@ -95,6 +102,5 @@ public class PlayerController : MonoBehaviour
     private void PlayHitSound()
     {
         hitSoundEffect.Play();
-
     }
 }
