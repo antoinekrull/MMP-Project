@@ -1,1 +1,10 @@
 Pipoya RPG Tileset 32x32
+https://pipoya.itch.io/pipoya-rpg-tileset-32x32
+
+"
+License
+- For commercial or personal use.
+- Use and edit freely.
+- Not redistribute or resell this assets.
+- It can be used for game development and other productions.
+"
