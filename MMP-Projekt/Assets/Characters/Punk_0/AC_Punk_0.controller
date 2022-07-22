@@ -162,13 +162,8 @@ AnimatorStateMachine:
     m_State: {fileID: -4031539080619790288}
     m_Position: {x: 210, y: 160, z: 0}
   - serializedVersion: 1
-<<<<<<< HEAD
-    m_State: {fileID: -782905841173431057}
-    m_Position: {x: 245, y: 225, z: 0}
-=======
     m_State: {fileID: 5551904177563333925}
     m_Position: {x: -20, y: 230, z: 0}
->>>>>>> main
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -8885887010358023235}
@@ -637,9 +632,6 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-<<<<<<< HEAD
-    m_Controller: {fileID: 9100000}
-=======
     m_Controller: {fileID: 0}
   - m_Name: health
     m_Type: 3
@@ -647,7 +639,6 @@ AnimatorController:
     m_DefaultInt: 3
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
->>>>>>> main
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
