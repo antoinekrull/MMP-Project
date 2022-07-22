@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 1001700680145800192}
   - component: {fileID: 1001700680145800207}
   - component: {fileID: 1001700680145800193}
-  - component: {fileID: 468623571}
-  - component: {fileID: 468623563}
-  - component: {fileID: 468623564}
+  - component: {fileID: 1001700680252916058}
+  - component: {fileID: 1001700680252916059}
   m_Layer: 0
   m_Name: JustusEnemy
   m_TagString: Hitbox Enemy
@@ -35,8 +34,7 @@ Transform:
   m_LocalPosition: {x: -4.141373, y: -1.7955885, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3026125975767717011}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -125,15 +123,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 3
+  maxHealth: 1
   speed: 3
-  checkRadius: 5
+  checkRadius: 15
   attackRadius: 1.5
   layer:
     serializedVersion: 2
-    m_Bits: 0
-  stepSoundEffect: {fileID: 468623563}
-  hitSoundEffect: {fileID: 468623564}
+    m_Bits: 64
+  stepSoundEffect: {fileID: 1001700680252916058}
+  hitSoundEffect: {fileID: 1001700680252916059}
 --- !u!50 &1001700680145800207
 Rigidbody2D:
   serializedVersion: 4
@@ -165,29 +163,13 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0048006503, y: -0.64385086}
-  m_Size: {x: 0.40135258, y: 0.38613945}
-  m_Direction: 1
---- !u!70 &468623571
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001700680145800203}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020996988, y: -0.32452655}
-  m_Size: {x: 1.303965, y: 2.210569}
-  m_Direction: 0
---- !u!82 &468623563
+  m_Offset: {x: 0.0065666577, y: -0.8907909}
+  m_Size: {x: 0.687926, y: 0.6094672}
+  m_Direction: 1
+--- !u!82 &1001700680252916058
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,7 +265,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &468623564
+--- !u!82 &1001700680252916059
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -379,34 +361,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &6943769305227785762
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3026125975767717011}
-  m_Layer: 0
-  m_Name: Hitbox Enemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3026125975767717011
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6943769305227785762}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8196886, y: -0.029522657, z: -382.47498}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001700680145800205}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

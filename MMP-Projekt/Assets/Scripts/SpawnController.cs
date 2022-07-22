@@ -51,7 +51,7 @@ public class SpawnController : MonoBehaviour
         {
             for(int i = 0; i < 5; i++)
             {
-                waves[i] = new Wave(5, 5f);
+                waves[i] = new Wave(1, 5f);
             }
         }
         else

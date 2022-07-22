@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
         GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
         Arrow arrowScript = arrow.GetComponent<Arrow>();
 
-        arrowScript.velocity = new Vector2(x * 10.0f, y * 10.0f);
+        arrowScript.velocity = new Vector2(x * 15.0f, y * 15.0f);
         arrowScript.player = gameObject;
 
         arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(y, x) * Mathf.Rad2Deg);

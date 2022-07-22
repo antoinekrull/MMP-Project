@@ -20,15 +20,14 @@ public class Arrow : MonoBehaviour
         foreach(RaycastHit2D hit in hits)
         {
             GameObject other = hit.collider.gameObject;
+            Debug.Log(other);
             if(other != player)
             {
                 if(other.CompareTag("Hitbox Enemy"))
                 {
                     Destroy(gameObject);
-                    EnemyAI enemy = other.GetComponent<EnemyAI>();
-                    enemy.TakeDamage(1);
-                    Debug.Log(other.name);
-                   
+                    EnemyAI enemy = other.GetComponent<EnemyAI>();                  
+                    enemy.TakeDamage(1);                                       
                     break;
                 }
 
