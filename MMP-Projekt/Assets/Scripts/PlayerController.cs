@@ -90,8 +90,13 @@ public class PlayerController : MonoBehaviour
         float x = anim.GetFloat("x");
         float y = anim.GetFloat("y");
         GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
-        arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(x * 7.0f, y * 7.0f);
+        Arrow arrowScript = arrow.GetComponent<Arrow>();
+
+        arrowScript.velocity = new Vector2(x * 10.0f, y * 10.0f);
+        arrowScript.player = gameObject;
+
         arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+        Destroy(arrow, 5.0f);
     }
 
     private void PlayStepSound()
