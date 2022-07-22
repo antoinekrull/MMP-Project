@@ -6,9 +6,11 @@ public class SpawnController : MonoBehaviour
 {
 
     private static readonly SpawnController _instance = new SpawnController();
-    public Wave[] waves;
+    public Wave[] waves = new Wave[10];
     public EnemyAI enemy;
     public List<EnemyAI> enemies = new List<EnemyAI>();
+    GlobalOptions globalOptions = GlobalOptions.GetInstance();
+    
 
     Wave currentWave;
     int currentWaveNumber;
@@ -34,7 +36,27 @@ public class SpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetWavesAndEnemies(globalOptions.GetDifficulty());
         nextWave();
+    }
+
+    void SetWavesAndEnemies(bool isNormalDifficulty)
+    {
+        
+        if (isNormalDifficulty)
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                waves[i] = new Wave(5, 5f);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                waves[i] = new Wave(7, 5f);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -70,10 +92,16 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-    [System.Serializable]
+    
     public class Wave
     {
         public int enemyCount;
         public float timeBetweenSpawns;
+
+        public Wave(int eC, float tBS)
+        {
+            enemyCount = eC;
+            timeBetweenSpawns = tBS;
+        }
     }
 }
