@@ -19,11 +19,11 @@ public class GlobalOptions
 
     private static bool isNormalDifficulty = true;
 
-    public void setDifficulty(bool isNormal) {
+    public void SetDifficulty(bool isNormal) {
         isNormalDifficulty = isNormal;
     }
 
-    public bool getDifficulty() {
+    public bool GetDifficulty() {
         return isNormalDifficulty;
     }
 }

@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -660,6 +661,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1524980248}
   border: {x: 36, y: -2, z: -15, w: -16}
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0388376496a7140892d2023b5a22fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1001700680252916064}
+  enemies: []
 --- !u!1 &533254855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3383,7 +3398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &591058432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63538,3 +63553,14 @@ CapsuleCollider2D:
   m_Offset: {x: 1.8128855, y: -0.23943782}
   m_Size: {x: 1.1156964, y: 2.0392427}
   m_Direction: 0
+--- !u!114 &1001700680252916064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1001700680145800192, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+  m_PrefabInstance: {fileID: 1001700680252916056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001700680252916057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f908a05ad3d2626488175607b3a8a371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
