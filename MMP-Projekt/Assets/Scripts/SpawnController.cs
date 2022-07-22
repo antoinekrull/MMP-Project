@@ -6,23 +6,25 @@ public class SpawnController : MonoBehaviour
 {
 
     private static readonly SpawnController _instance = new SpawnController();
-    public Wave[] waves;
+    public Wave[] waves = new Wave[10];
     public EnemyAI enemy;
     public List<EnemyAI> enemies = new List<EnemyAI>();
+    GlobalOptions globalOptions = GlobalOptions.GetInstance();
+    
 
     Wave currentWave;
     int currentWaveNumber;
     int enemiesRemainingToSpawn;
     int nextSpawnTime;
 
-    private SpawnController() {}
+    private SpawnController() { }
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         EnemyAI.OnEnemyKilled += HandleEnemyDefeated;
     }
 
-    private void OnDisable() 
+    private void OnDisable()
     {
         EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;
     }
@@ -34,7 +36,27 @@ public class SpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetWavesAndEnemies(globalOptions.GetDifficulty());
         nextWave();
+    }
+
+    void SetWavesAndEnemies(bool isNormalDifficulty)
+    {
+        
+        if (isNormalDifficulty)
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                waves[i] = new Wave(5, 5f);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                waves[i] = new Wave(7, 5f);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -48,11 +70,12 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-    void HandleEnemyDefeated(EnemyAI enemy) 
+    void HandleEnemyDefeated(EnemyAI enemy)
     {
-        if(enemies.Remove(enemy))
+        if (enemies.Remove(enemy))
         {
-            if(enemies.Count == 0) {
+            if (enemies.Count == 0)
+            {
                 nextWave();
             }
             Debug.Log("Enemy killed");
@@ -62,17 +85,23 @@ public class SpawnController : MonoBehaviour
     void nextWave()
     {
         currentWaveNumber++;
-        if(currentWaveNumber - 1 < waves.Length)
+        if (currentWaveNumber - 1 < waves.Length)
         {
             currentWave = waves[currentWaveNumber - 1];
             enemiesRemainingToSpawn = currentWave.enemyCount;
         }
     }
 
-    [System.Serializable]
+    
     public class Wave
     {
         public int enemyCount;
         public float timeBetweenSpawns;
+
+        public Wave(int eC, float tBS)
+        {
+            enemyCount = eC;
+            timeBetweenSpawns = tBS;
+        }
     }
 }

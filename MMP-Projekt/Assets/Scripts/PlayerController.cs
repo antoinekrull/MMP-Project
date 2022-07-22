@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     // Adjust animation state
     private void Animate()
-    {        
+    {
         if (Input.GetKey(KeyCode.L)) // Listen for attack button input
         {
             anim.SetBool("isAttackingBow", true);     // Change animation state to "Combat"
@@ -56,11 +56,11 @@ public class PlayerController : MonoBehaviour
             canMove = false;    // Disable player movement - player should not be moving while attacking
         }
         if (movementDirection != Vector2.zero && canMove)
-        {     
+        {
             anim.SetFloat("x", horizontal);
             anim.SetFloat("y", vertical);
         }
-        anim.SetFloat("speed", movementDirection.magnitude);                        
+        anim.SetFloat("speed", movementDirection.magnitude);
     }
 
     // Method gets called by the last frame of the attack animation
@@ -71,11 +71,11 @@ public class PlayerController : MonoBehaviour
         canMove = true;     // Enable player movement        
     }
 
-    void OnCollisionEnter2D(Collision2D collision) 
+    void OnCollisionEnter2D(Collision2D collision)
     {
         //now the enemies are getting killed by moving into them
         //the weapon e.g. bow/arrow needs to be a standalone collision object so this can be checked within the arrow monobehaviour
-        if(collision.gameObject.TryGetComponent<EnemyAI>(out EnemyAI enemyComponent))
+        if (collision.gameObject.TryGetComponent<EnemyAI>(out EnemyAI enemyComponent))
         {
             enemyComponent.TakeDamage(1);
             Debug.Log("Coll");
@@ -95,6 +95,6 @@ public class PlayerController : MonoBehaviour
     private void PlayHitSound()
     {
         hitSoundEffect.Play();
-        
+
     }
 }
