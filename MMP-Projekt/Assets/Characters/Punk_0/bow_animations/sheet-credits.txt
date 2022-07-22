@@ -1,0 +1,40 @@
+Authors: drjamgo@hotmail.com, Stephen Challener (Redshrike), Johannes Sjölund (wulax), Matthew Krohn (makrohn), Manuel Riecke (MrBeast), bluecarrot16, David Conway Jr. (JaidynReiman), Marcel van de Steeg (MadMarcel), Nila122
+
+- shadow/adult/shadow.png: by drjamgo@hotmail.com. License(s): CC0. 
+    - https://opengameart.org/content/shadow-for-lpc-sprite
+
+- body/male/human/white.png: by Stephen Challener (Redshrike), Johannes Sjölund (wulax). License(s): CC-BY-SA 3.0, GPL 3.0. 
+    - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+    - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+
+- eyes/male/brown.png: by Matthew Krohn (makrohn), Stephen Challener (Redshrike). License(s): CC-BY-SA 3.0, GPL 3.0. 
+    - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+
+- hair/longhawk/male/violet.png: by Manuel Riecke (MrBeast). License(s): CC-BY-SA 3.0, GPL 3.0. 
+    - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+
+- facial/earring/male/gold.png: by bluecarrot16. License(s): CC-BY-SA 3.0. 
+    - https://opengameart.org/content/lpc-pirates
+
+- torso/clothes/sleeveless/male/charcoal.png: by bluecarrot16, Matthew Krohn (makrohn), David Conway Jr. (JaidynReiman), Marcel van de Steeg (MadMarcel), Nila122, Johannes Sjölund (wulax), Stephen Challener (Redshrike). License(s): CC-BY-SA 3.0. 
+    - https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle
+    - https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more
+    - https://opengameart.org/content/more-lpc-clothes-and-hair
+    - https://opengameart.org/content/lpc-pirates
+
+- torso/waist/belt_loose/male/leather.png: by bluecarrot16, Johannes Sjölund (wulax), Matthew Krohn (makrohn). License(s): CC-BY-SA 3.0, GPL 3.0. 
+    - https://opengameart.org/content/lpc-combat-armor-for-women
+    - https://opengameart.org/content/lpc-pirates
+
+- legs/pantaloons/male/black.png: by Nila122, Johannes Sjölund (wulax), Stephen Challener (Redshrike). License(s): CC-BY-SA 3.0, GPL 2.0, GPL 3.0. 
+    - https://opengameart.org/content/lpc-pirates
+    - https://opengameart.org/content/more-lpc-clothes-and-hair
+
+- feet/sandals/male/brown.png: by Nila122, David Conway Jr. (JaidynReiman), Matthew Krohn (makrohn), Johannes Sjölund (wulax). License(s): CC-BY-SA 3.0, GPL 2.0, GPL 3.0. 
+    - https://opengameart.org/content/lpc-roman-armor
+
+- weapon/bow/normal.png: by Johannes Sjölund (wulax). License(s): CC-BY-SA 3.0, GPL 3.0. 
+    - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+
+- ammo/arrow.png: by Johannes Sjölund (wulax). License(s): CC-BY-SA 3.0, GPL 3.0. 
+    - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
