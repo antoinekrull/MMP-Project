@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnController : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class SpawnController : MonoBehaviour
 
     void HandlePlayerDeath(PlayerController player)
     {
-        Debug.Log("Player is dead");
+        SceneManager.LoadScene("Scenes/DeathMenu");
     }
 
     void HandleEnemyDefeated(EnemyAI enemy)
