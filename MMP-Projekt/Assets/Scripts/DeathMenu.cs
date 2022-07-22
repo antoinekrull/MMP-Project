@@ -27,6 +27,6 @@ public class DeathMenu : MonoBehaviour
 
     public void Update()
     {
-        wavesSurvived.text = textValue;
+        //wavesSurvived.text = textValue;
     }
 }
