@@ -7,14 +7,14 @@ public class SpawnController : MonoBehaviour
 {
 
     private static readonly SpawnController _instance = new SpawnController();
-    public Wave[] waves = new Wave[10];
+    private Wave[] waves = new Wave[10];
     public EnemyAI enemy;
     public List<EnemyAI> enemies = new List<EnemyAI>();
     GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
 
     Wave currentWave;
-    int currentWaveNumber;
+    int currentWaveNumber = 0;
     int enemiesRemainingToSpawn;
     int nextSpawnTime;
 
@@ -48,7 +48,7 @@ public class SpawnController : MonoBehaviour
 
         if (isNormalDifficulty)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 1; i++)
             {
                 waves[i] = new Wave(1, 5f);
             }
@@ -86,17 +86,21 @@ public class SpawnController : MonoBehaviour
             {
                 nextWave();
             }
-            Debug.Log("Enemy killed");
         }
     }
 
     void nextWave()
     {
+        Debug.Log(currentWaveNumber);
         currentWaveNumber++;
         if (currentWaveNumber - 1 < waves.Length)
         {
             currentWave = waves[currentWaveNumber - 1];
             enemiesRemainingToSpawn = currentWave.enemyCount;
+        }
+        else
+        {
+            SceneManager.LoadScene("Scenes/WinMenu");
         }
     }
 
