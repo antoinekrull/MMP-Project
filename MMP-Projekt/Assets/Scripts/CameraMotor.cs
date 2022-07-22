@@ -15,7 +15,7 @@ public class CameraMotor : MonoBehaviour
     void LateUpdate()
     {         
         if (target)
-        {
+        {            
             x = target.transform.position.x;
             y = target.transform.position.y;
 
