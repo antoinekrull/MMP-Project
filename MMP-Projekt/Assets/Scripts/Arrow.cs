@@ -25,7 +25,10 @@ public class Arrow : MonoBehaviour
                 if(other.CompareTag("Hitbox Enemy"))
                 {
                     Destroy(gameObject);
+                    EnemyAI enemy = other.GetComponent<EnemyAI>();
+                    enemy.TakeDamage(1);
                     Debug.Log(other.name);
+                   
                     break;
                 }
 

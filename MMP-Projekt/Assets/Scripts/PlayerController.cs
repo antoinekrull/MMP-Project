@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 // Takes and handles input and movement for a player character
 public class PlayerController : MonoBehaviour
@@ -9,10 +10,15 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private CircleCollider2D cc;
 
+    public static event Action<PlayerController> OnPlayerDeath;
+    public static event Action<PlayerController> OnDamageTaken;
+
     private Vector2 movementDirection;
     private float horizontal;
     private float vertical;
     private bool canMove = false;
+
+    public int health, maxHealth = 3;
 
     public GameObject arrowPrefab;
 
@@ -73,15 +79,22 @@ public class PlayerController : MonoBehaviour
         canMove = true;     // Enable player movement        
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    
+    public void TakeDamage(int damageAmount)
     {
-        //now the enemies are getting killed by moving into them
-        //the weapon e.g. bow/arrow needs to be a standalone collision object so this can be checked within the arrow monobehaviour
-        if (collision.gameObject.TryGetComponent<EnemyAI>(out EnemyAI enemyComponent))
+        health -= damageAmount;
+        if (health <= 0)
         {
-            enemyComponent.TakeDamage(1);
-            Debug.Log("Coll");
+            Die();
         }
+        Debug.Log("Current health: " + health);
+        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+        OnPlayerDeath?.Invoke(this);
     }
 
     private void PlayBowSound()

@@ -37,7 +37,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private AudioSource hitSoundEffect;
     
 
-
     private void Start()
     {
         health = maxHealth;
@@ -93,7 +92,7 @@ public class EnemyAI : MonoBehaviour
         isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, layer); 
         if(isInAttackRange)
         {
-            OnDamageTaken.Invoke(this);
+            // OnDamageTaken.Invoke(this);
             // take damage on PlayerController
         }
     }
@@ -104,14 +103,15 @@ public class EnemyAI : MonoBehaviour
     }
 
     public void TakeDamage(int damageAmount)
-    {
+    { 
         health -= damageAmount;
-        if(health <= 0)
+        Debug.Log("Damage Taken was called, health: " + health);
+       
+        if (health <= 0)
         {
-            Die();
+            anim.SetInteger("health", health); // If health <= 0: death animation state gets activated               
         }
-        Debug.Log("Current health: " + health);
-        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
+        //OnDamageTaken.Invoke(this);       
     }
 
     // Method  gets called by last frame of death animation
