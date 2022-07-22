@@ -17,10 +17,13 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask layer; // selectable layer mask
 
+    private GameObject playerGameObject; 
     private Transform target; // Punk Player
     private Rigidbody2D rb;
     private Animator anim;
     private Vector2 movement;
+
+    PlayerController player;
 
     private bool isInChaseRange;
     private bool isInAttackRange;
@@ -29,9 +32,8 @@ public class EnemyAI : MonoBehaviour
     private float stopwatch = 0f;
 
     private BoxCollider2D boxCollider;
+    private CircleCollider2D circleCollider; 
     private System.Random ran = new System.Random();
-
-    private bool isAttacking;
 
     [SerializeField] private AudioSource stepSoundEffect;
     [SerializeField] private AudioSource hitSoundEffect;
@@ -41,9 +43,11 @@ public class EnemyAI : MonoBehaviour
     {
         health = maxHealth;
         boxCollider = GetComponent<BoxCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        target = GameObject.FindWithTag("Player").transform;        
+        playerGameObject = GameObject.FindWithTag("Player");
+        target = playerGameObject.transform;        
     }
 
     private void Update()
@@ -69,10 +73,10 @@ public class EnemyAI : MonoBehaviour
 
     // set animation state
     private void Animate()
-    {   
+    {       
         if (isInAttackRange)
         {
-            anim.SetBool("isAttacking", true);
+            anim.SetBool("isAttacking", true);        
             canMove = false; // Disable player movement - player should not be moving while attacking
         }
 
@@ -88,12 +92,13 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void CheckHitbox() 
-    {
-        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, layer); 
-        if(isInAttackRange)
-        {
-            // OnDamageTaken.Invoke(this);
-            // take damage on PlayerController
+    {       
+        player = playerGameObject.GetComponent<PlayerController>();
+        Collider2D playerCollider = player.GetComponent<BoxCollider2D>();
+       
+        if(circleCollider.IsTouching(playerCollider) && !player.isDead)
+        {           
+            player.TakeDamage(1);
         }
     }
 
@@ -104,9 +109,7 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     { 
-        health -= damageAmount;
-        Debug.Log("Damage Taken was called, health: " + health);
-        
+        health -= damageAmount;                
         canMove = health >= 1;
            
         anim.SetInteger("health", health); // If health <= 0: death animation state gets activated               

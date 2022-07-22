@@ -23,14 +23,12 @@ public class SpawnController : MonoBehaviour
     {
         EnemyAI.OnEnemyKilled += HandleEnemyDefeated;
         PlayerController.OnPlayerDeath += HandlePlayerDeath;
-        PlayerController.OnDamageTaken += HandlePlayerDamageTaken;
     }
 
     private void OnDisable()
     {
         EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;   
         PlayerController.OnPlayerDeath -= HandlePlayerDeath;
-        PlayerController.OnDamageTaken -= HandlePlayerDamageTaken;
     }
 
     public static SpawnController GetInstance()
@@ -72,12 +70,6 @@ public class SpawnController : MonoBehaviour
             enemies.Add(spawnedEnemy);
             enemiesRemainingToSpawn--;
         }
-    }
-
-    
-    void HandlePlayerDamageTaken(PlayerController player)
-    {
-        //player.TakeDamage(1);
     }
 
     void HandlePlayerDeath(PlayerController player)

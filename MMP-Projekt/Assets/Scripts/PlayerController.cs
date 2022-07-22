@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool canMove = false;
 
     public int health, maxHealth = 3;
+    public bool isDead = false;
 
     public GameObject arrowPrefab;
 
@@ -82,13 +83,14 @@ public class PlayerController : MonoBehaviour
     
     public void TakeDamage(int damageAmount)
     {
+        Debug.Log("Punk got hit. Health: " + health);
         health -= damageAmount;
+        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
         if (health <= 0)
         {
-            Die();
-        }
-        Debug.Log("Current health: " + health);
-        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
+            isDead = true;
+            return;
+        }       
     }
 
     private void Die()
