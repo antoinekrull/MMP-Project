@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SpawnController : MonoBehaviour
@@ -15,7 +16,9 @@ public class SpawnController : MonoBehaviour
     Wave currentWave;
     private int waveCount;
     int currentWaveNumber = 0;
-    public float time = 0f;
+    public float survivedTime = 0f;
+
+    public Text wavesEnemysLeft;
 
     private SpawnController() { }
 
@@ -40,7 +43,7 @@ public class SpawnController : MonoBehaviour
     void Start()
     {
         waveCount = globalOptions.GetDifficulty() ? 5 : 10; //depending on difficulty
-        startWave();      
+        StartWave();      
     }
 
     Wave SetWavesAndEnemies(bool isNormalDifficulty)
@@ -50,7 +53,7 @@ public class SpawnController : MonoBehaviour
     }
 
 
-    void startWave()
+    void StartWave()
     {
         Debug.Log(currentWaveNumber);
         if (currentWaveNumber < waveCount)
@@ -58,18 +61,19 @@ public class SpawnController : MonoBehaviour
             Debug.Log("New wave was set");
             currentWave = SetWavesAndEnemies(globalOptions.GetDifficulty());
             currentWaveNumber++;
+            wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.enemies.Count + " enemys left";
         }
         else
         {
-            globalOptions.SetSurvivedTime(time);
+            globalOptions.SetSurvivedTime(survivedTime);
             SceneManager.LoadScene("Scenes/WinMenu");
-        }
+        }        
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;        
+        survivedTime += Time.deltaTime;        
         //update wave counter or timer top right
         StartCoroutine(ExecuteAfterTime(0.8f, () =>
         {
@@ -80,6 +84,7 @@ public class SpawnController : MonoBehaviour
                 currentWave.remainingEnemiesToSpawn--;
             }           
         }));
+        wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.enemies.Count + " enemys left";
     }
 
     void HandlePlayerDeath(PlayerController player)
@@ -95,7 +100,7 @@ public class SpawnController : MonoBehaviour
             if (currentWave.enemies.Count == 0)
             {
                 Debug.Log("Wave survived");
-                startWave();
+                StartWave();
             }
         }
     }
