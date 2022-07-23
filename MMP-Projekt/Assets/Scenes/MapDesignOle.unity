@@ -64288,6 +64288,10 @@ PrefabInstance:
       propertyPath: attackRadius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 811411283608497550, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: gotHitSoundEffect
+      value: 
+      objectReference: {fileID: 1001700680252916074}
     - target: {fileID: 811411283608497563, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -64340,6 +64344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JustusEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7707210701861265405, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
 --- !u!114 &1001700680252916064 stripped
@@ -64353,3 +64361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f908a05ad3d2626488175607b3a8a371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1001700680252916074 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7707210701861265405, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+  m_PrefabInstance: {fileID: 478638531259165934}
+  m_PrefabAsset: {fileID: 0}
