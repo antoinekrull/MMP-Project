@@ -69,8 +69,7 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        Debug.Log(time);
+        time += Time.deltaTime;        
         //update wave counter or timer top right
         StartCoroutine(ExecuteAfterTime(0.8f, () =>
         {

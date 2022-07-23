@@ -7,8 +7,7 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Animator anim;
-    private CircleCollider2D circleCollider;
+    private Animator anim;    
 
     public static event Action<PlayerController> OnPlayerDeath;
     public static event Action<PlayerController> OnDamageTaken;
@@ -31,8 +30,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        circleCollider = GetComponent<CircleCollider2D>();
+        anim = GetComponent<Animator>();        
         anim.SetInteger("health", health);
     }
 
@@ -81,29 +79,26 @@ public class PlayerController : MonoBehaviour
         canMove = true;     // Enable player movement        
     }
 
+    /* Immer nur ein Enemy angreifbar :(
     private void CheckHitbox()
     {
         GameObject enemyObject = GameObject.FindWithTag("Hitbox Enemy");
         EnemyAI enemy = enemyObject.GetComponent<EnemyAI>();
-        BoxCollider2D enemyCollider = enemy.GetComponent<BoxCollider2D>();
+        BoxCollider2D enemysBoxCollider = enemyObject.GetComponent<BoxCollider2D>();
 
-        if (enemy != null && circleCollider.IsTouching(enemyCollider))
+        if (enemyObject != null && playersShovelCollider.IsTouching(enemysBoxCollider))
         {
-            enemy.TakeDamage(1);
+            enemy.TakeDamage(1);            
         }
     }
+    */
 
 
     public void TakeDamage(int damageAmount)
     {
-        //health -= damageAmount;
+        health -= damageAmount;
         Debug.Log("Punk got hit. Health: " + health);
-        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
-        /* if (health <= 0)
-        {
-            isDead = true;
-            return;
-        } */
+        anim.SetInteger("health", health); // If health < 1: death animation state gets activated            
         isDead = health <= 0;
         canMove = health >= 1;
     }

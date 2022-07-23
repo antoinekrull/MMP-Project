@@ -31,7 +31,9 @@ public class EnemyAI : MonoBehaviour
 
     private float stopwatch = 0f;
 
-    private BoxCollider2D playerCollider;
+    private BoxCollider2D playersBoxCollider;
+    private CircleCollider2D playersShovelCollider;
+    private BoxCollider2D enemysBoxCollider;
     private CircleCollider2D circleCollider;
     private System.Random ran = new System.Random();
 
@@ -42,11 +44,15 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        playerGameObject = GameObject.FindWithTag("Player");
+        player = playerGameObject.GetComponent<PlayerController>();
+        playersBoxCollider = player.GetComponent<BoxCollider2D>();
+        enemysBoxCollider = GetComponent<BoxCollider2D>();
+        playersShovelCollider = player.GetComponent<CircleCollider2D>();
         health = maxHealth;        
         circleCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        playerGameObject = GameObject.FindWithTag("Player");
         target = playerGameObject.transform;
     }
 
@@ -69,6 +75,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         Animate();
+        VarifyHitFromPlayer();
     }
 
     // set animation state
@@ -91,12 +98,18 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void CheckHitbox()
+    private void VarifyHitFromPlayer()
     {
-        player = playerGameObject.GetComponent<PlayerController>();
-        playerCollider = player.GetComponent<BoxCollider2D>();
+        if (enemysBoxCollider.IsTouching(playersShovelCollider) && !player.isDead)
+        {
+            TakeDamage(1);
+        }
+    }
 
-        if (circleCollider.IsTouching(playerCollider) && !player.isDead)
+    private void VarifyHitAgainstPlayer()
+    {               
+
+        if (circleCollider.IsTouching(playersBoxCollider) && !player.isDead)
         {
             player.TakeDamage(1);
         }
