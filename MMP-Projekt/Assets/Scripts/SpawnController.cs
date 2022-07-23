@@ -6,19 +6,21 @@ using UnityEngine.SceneManagement;
 public class SpawnController : MonoBehaviour
 {
 
-    private static readonly SpawnController _instance = new SpawnController();
-    private Wave[] waves = new Wave[10];
-    public EnemyAI enemy;
-    public List<EnemyAI> enemies = new List<EnemyAI>();
+    private static readonly SpawnController _instance = new SpawnController();   
+ 
+    public EnemyAI enemy; //needed to instantiate enemy objects   
     GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
-
     Wave currentWave;
-    int currentWaveNumber = 0;
-    int enemiesRemainingToSpawn;
-    int nextSpawnTime;
+    private int waveCount;
+    int currentWaveNumber = 0;  
 
     private SpawnController() { }
+
+    public static SpawnController GetInstance()
+    {
+        return _instance;
+    }
 
     private void OnEnable()
     {
@@ -31,46 +33,39 @@ public class SpawnController : MonoBehaviour
         EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;
         PlayerController.OnPlayerDeath -= HandlePlayerDeath;
     }
-
-    public static SpawnController GetInstance()
-    {
-        return _instance;
-    }
+  
     // Start is called before the first frame update
     void Start()
     {
-        SetWavesAndEnemies(globalOptions.GetDifficulty());
-        nextWave();
+        waveCount = globalOptions.GetDifficulty() ? 5 : 10; //depending on difficulty
+        startWave();      
     }
 
-    void SetWavesAndEnemies(bool isNormalDifficulty)
+    Wave SetWavesAndEnemies(bool isNormalDifficulty)
     {
+        int enemyCount = isNormalDifficulty ? 5 : 10;        
+        return new Wave(enemyCount, enemy);             
+    }
 
-        if (isNormalDifficulty)
+
+    void startWave()
+    {
+        Debug.Log(currentWaveNumber);
+        if (currentWaveNumber < waveCount)
         {
-            for (int i = 0; i < 1; i++)
-            {
-                waves[i] = new Wave(1, 5f);
-            }
+            currentWave = SetWavesAndEnemies(globalOptions.GetDifficulty());
+            currentWaveNumber++;
         }
         else
         {
-            for (int i = 0; i < 7; i++)
-            {
-                waves[i] = new Wave(7, 5f);
-            }
+            SceneManager.LoadScene("Scenes/WinMenu");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime)
-        {
-            EnemyAI spawnedEnemy = Instantiate(enemy, Vector2.zero, Quaternion.identity) as EnemyAI;
-            enemies.Add(spawnedEnemy);
-            enemiesRemainingToSpawn--;
-        }
+        //update wave counter or timer top right
     }
 
     void HandlePlayerDeath(PlayerController player)
@@ -80,40 +75,29 @@ public class SpawnController : MonoBehaviour
 
     void HandleEnemyDefeated(EnemyAI enemy)
     {
-        if (enemies.Remove(enemy))
+        if (currentWave.enemies.Remove(enemy))
         {
-            if (enemies.Count == 0)
+            if (currentWave.enemies.Count == 0)
             {
-                nextWave();
+                startWave();
             }
         }
     }
 
-    void nextWave()
-    {
-        Debug.Log(currentWaveNumber);
-        currentWaveNumber++;
-        if (currentWaveNumber - 1 < waves.Length)
-        {
-            currentWave = waves[currentWaveNumber - 1];
-            enemiesRemainingToSpawn = currentWave.enemyCount;
-        }
-        else
-        {
-            SceneManager.LoadScene("Scenes/WinMenu");
-        }
-    }
-
-
     public class Wave
     {
-        public int enemyCount;
-        public float timeBetweenSpawns;
+        public int enemyCount;               
+        public List<EnemyAI> enemies = new List<EnemyAI>();
 
-        public Wave(int eC, float tBS)
+        public Wave(int eC, EnemyAI enemy)
         {
-            enemyCount = eC;
-            timeBetweenSpawns = tBS;
+            enemyCount = eC;         
+
+            for(int i = 0; i < enemyCount; i++)
+            {
+                EnemyAI spawnedEnemy = Instantiate(enemy, Vector2.zero, Quaternion.identity) as EnemyAI;
+                enemies.Add(spawnedEnemy);
+            }                       
         }
     }
 }

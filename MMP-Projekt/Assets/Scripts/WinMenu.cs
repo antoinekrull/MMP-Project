@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class WinMenu : MonoBehaviour
-{
-
+{   
     public void PlayGame()
-    {
+    {       
         Debug.Log("blubberhnas");
         SceneManager.LoadScene("Scenes/MapDesignOle");
     }
