@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnController : MonoBehaviour
 {
 
     private static readonly SpawnController _instance = new SpawnController();
-    public Wave[] waves = new Wave[10];
+    private Wave[] waves = new Wave[10];
     public EnemyAI enemy;
     public List<EnemyAI> enemies = new List<EnemyAI>();
     GlobalOptions globalOptions = GlobalOptions.GetInstance();
-    
+
 
     Wave currentWave;
-    int currentWaveNumber;
+    int currentWaveNumber = 0;
     int enemiesRemainingToSpawn;
     int nextSpawnTime;
 
@@ -23,14 +24,12 @@ public class SpawnController : MonoBehaviour
     {
         EnemyAI.OnEnemyKilled += HandleEnemyDefeated;
         PlayerController.OnPlayerDeath += HandlePlayerDeath;
-        PlayerController.OnDamageTaken += HandlePlayerDamageTaken;
     }
 
     private void OnDisable()
     {
-        EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;   
+        EnemyAI.OnEnemyKilled -= HandleEnemyDefeated;
         PlayerController.OnPlayerDeath -= HandlePlayerDeath;
-        PlayerController.OnDamageTaken -= HandlePlayerDamageTaken;
     }
 
     public static SpawnController GetInstance()
@@ -46,10 +45,10 @@ public class SpawnController : MonoBehaviour
 
     void SetWavesAndEnemies(bool isNormalDifficulty)
     {
-        
+
         if (isNormalDifficulty)
         {
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 1; i++)
             {
                 waves[i] = new Wave(1, 5f);
             }
@@ -74,15 +73,9 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-    
-    void HandlePlayerDamageTaken(PlayerController player)
-    {
-        //player.TakeDamage(1);
-    }
-
     void HandlePlayerDeath(PlayerController player)
     {
-        Debug.Log("Player is dead");
+        SceneManager.LoadScene("Scenes/DeathMenu");
     }
 
     void HandleEnemyDefeated(EnemyAI enemy)
@@ -93,21 +86,25 @@ public class SpawnController : MonoBehaviour
             {
                 nextWave();
             }
-            Debug.Log("Enemy killed");
         }
     }
 
     void nextWave()
     {
+        Debug.Log(currentWaveNumber);
         currentWaveNumber++;
         if (currentWaveNumber - 1 < waves.Length)
         {
             currentWave = waves[currentWaveNumber - 1];
             enemiesRemainingToSpawn = currentWave.enemyCount;
         }
+        else
+        {
+            SceneManager.LoadScene("Scenes/WinMenu");
+        }
     }
 
-    
+
     public class Wave
     {
         public int enemyCount;

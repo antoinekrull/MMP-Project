@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool canMove = false;
 
     public int health, maxHealth = 3;
+    public bool isDead = false;
 
     public GameObject arrowPrefab;
 
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         cc = GetComponent<CircleCollider2D>();
+        anim.SetInteger("health", health);
     }
 
     void Update()
@@ -79,16 +81,19 @@ public class PlayerController : MonoBehaviour
         canMove = true;     // Enable player movement        
     }
 
-    
+
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        if (health <= 0)
-        {
-            Die();
-        }
-        Debug.Log("Current health: " + health);
+        Debug.Log("Punk got hit. Health: " + health);
         anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
+        /* if (health <= 0)
+        {
+            isDead = true;
+            return;
+        } */
+        isDead = health <= 0;
+        canMove = health >= 1;
     }
 
     private void Die()
@@ -98,8 +103,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayBowSound()
-    {     
-        bowSoundEffect.Play();      
+    {
+        bowSoundEffect.Play();
         float x = anim.GetFloat("x");
         float y = anim.GetFloat("y");
         GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
