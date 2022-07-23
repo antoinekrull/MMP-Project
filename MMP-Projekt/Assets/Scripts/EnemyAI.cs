@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private AudioSource stepSoundEffect;
     [SerializeField] private AudioSource hitSoundEffect;
+    [SerializeField] private AudioSource gotHitSoundEffect;
 
 
     private void Start()
@@ -108,6 +109,7 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        PlayGotHitSound();
         health -= damageAmount;
         canMove = health >= 1;
 
@@ -155,6 +157,11 @@ public class EnemyAI : MonoBehaviour
     private void PlayHitSound()
     {
         hitSoundEffect.Play();
+    }
+
+    private void PlayGotHitSound()
+    {
+        gotHitSoundEffect.Play();
     }
 
 }
