@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
 
     private float stopwatch = 0f;
 
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D playerCollider;
     private CircleCollider2D circleCollider;
     private System.Random ran = new System.Random();
 
@@ -41,8 +41,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        health = maxHealth;
-        boxCollider = GetComponent<BoxCollider2D>();
+        health = maxHealth;        
         circleCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -94,7 +93,7 @@ public class EnemyAI : MonoBehaviour
     private void CheckHitbox()
     {
         player = playerGameObject.GetComponent<PlayerController>();
-        Collider2D playerCollider = player.GetComponent<BoxCollider2D>();
+        playerCollider = player.GetComponent<BoxCollider2D>();
 
         if (circleCollider.IsTouching(playerCollider) && !player.isDead)
         {

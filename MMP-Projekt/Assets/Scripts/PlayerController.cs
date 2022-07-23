@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         cc = GetComponent<CircleCollider2D>();
+        anim.SetInteger("health", health);
     }
 
     void Update()
@@ -83,14 +84,16 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        Debug.Log("Punk got hit. Health: " + health);
         health -= damageAmount;
+        Debug.Log("Punk got hit. Health: " + health);
         anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
-        if (health <= 0)
+        /* if (health <= 0)
         {
             isDead = true;
             return;
-        }
+        } */
+        isDead = health <= 0;
+        canMove = health >= 1;
     }
 
     private void Die()
