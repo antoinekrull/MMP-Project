@@ -54,6 +54,7 @@ public class SpawnController : MonoBehaviour
         Debug.Log(currentWaveNumber);
         if (currentWaveNumber < waveCount)
         {
+            Debug.Log("New wave was set");
             currentWave = SetWavesAndEnemies(globalOptions.GetDifficulty());
             currentWaveNumber++;
         }
@@ -69,8 +70,12 @@ public class SpawnController : MonoBehaviour
         //update wave counter or timer top right
         StartCoroutine(ExecuteAfterTime(0.8f, () =>
         {
+            Debug.Log("Remaining Enemies to spawn: " + currentWave.remainingEnemiesToSpawn);
             currentWave.SpawnEnemy(enemy);
-            currentWave.remainingEnemiesToSpawn--;
+            if(currentWave.remainingEnemiesToSpawn > 0)
+            {
+                currentWave.remainingEnemiesToSpawn--;
+            }           
         }));
     }
 
@@ -85,6 +90,7 @@ public class SpawnController : MonoBehaviour
         {
             if (currentWave.enemies.Count == 0)
             {
+                Debug.Log("Wave survived");
                 startWave();
             }
         }

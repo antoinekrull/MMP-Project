@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    private CircleCollider2D cc;
+    private CircleCollider2D circleCollider;
 
     public static event Action<PlayerController> OnPlayerDeath;
     public static event Action<PlayerController> OnDamageTaken;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool canMove = false;
 
     public int health, maxHealth = 3;
-    public bool isDead = false;
+    public bool isDead = false;  
 
     public GameObject arrowPrefab;
 
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        cc = GetComponent<CircleCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
         anim.SetInteger("health", health);
     }
 
@@ -81,10 +81,22 @@ public class PlayerController : MonoBehaviour
         canMove = true;     // Enable player movement        
     }
 
+    private void CheckHitbox()
+    {
+        GameObject enemyObject = GameObject.FindWithTag("Hitbox Enemy");
+        EnemyAI enemy = enemyObject.GetComponent<EnemyAI>();
+        BoxCollider2D enemyCollider = enemy.GetComponent<BoxCollider2D>();
+
+        if (enemy != null && circleCollider.IsTouching(enemyCollider))
+        {
+            enemy.TakeDamage(1);
+        }
+    }
+
 
     public void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
+        //health -= damageAmount;
         Debug.Log("Punk got hit. Health: " + health);
         anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
         /* if (health <= 0)

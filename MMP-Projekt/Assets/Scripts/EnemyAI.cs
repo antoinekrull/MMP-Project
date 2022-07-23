@@ -108,12 +108,13 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
-        canMove = health >= 1;
+        if(gameObject != null)
+        {
+            health -= damageAmount;
+            canMove = health >= 1;
 
-        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated               
-
-        //OnDamageTaken.Invoke(this);       
+            anim.SetInteger("health", health); // If health <= 0: death animation state gets activated               
+        }    
     }
 
     // Method  gets called by last frame of death animation
