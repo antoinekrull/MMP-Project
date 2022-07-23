@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isAttackingShovel", false); // Change animation state from "Combat" to "Movement"
         anim.SetBool("isAttackingBow", false); // Change animation state from "Combat" to "Movement"
-        canMove = true;     // Enable player movement        
+        canMove = health >= 1; // Enable player movement        
     }
 
     /* Immer nur ein Enemy angreifbar :(

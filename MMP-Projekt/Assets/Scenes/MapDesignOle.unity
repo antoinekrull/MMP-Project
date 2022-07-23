@@ -64263,7 +64263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396383567119114590, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: health
-      value: 3
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7396383567119114590, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: runSpeed
@@ -64271,7 +64271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396383567119114590, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7396383567119114590, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: moveSpeed
@@ -64343,6 +64343,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1298843400018396164, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396167, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
     - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
       propertyPath: m_RootOrder
       value: 2

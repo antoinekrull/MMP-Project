@@ -124,12 +124,13 @@ public class EnemyAI : MonoBehaviour
     {
         if(gameObject != null)
         {
-            health -= damageAmount;
-            canMove = health >= 1;
             PlayGotHitSound();
 
             anim.SetInteger("health", health); // If health <= 0: death animation state gets activated               
         }            
+        health -= damageAmount;
+        canMove = health >= 1;
+        Debug.Log(canMove);
         anim.SetInteger("health", health); // If health <= 0: death animation state gets activated                    
     }
 
@@ -156,7 +157,7 @@ public class EnemyAI : MonoBehaviour
     private void EndAttack()
     {
         anim.SetBool("isAttacking", false);
-        canMove = true;
+        canMove = health >= 1;
         if (movement != Vector2.zero)
         {
             anim.SetFloat("x", movement.x);
