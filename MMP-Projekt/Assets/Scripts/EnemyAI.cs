@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private AudioSource stepSoundEffect;
     [SerializeField] private AudioSource hitSoundEffect;
+    [SerializeField] private AudioSource gotHitSoundEffect;
 
 
     private void Start()
@@ -112,9 +113,11 @@ public class EnemyAI : MonoBehaviour
         {
             health -= damageAmount;
             canMove = health >= 1;
+            PlayGotHitSound();
 
             anim.SetInteger("health", health); // If health <= 0: death animation state gets activated               
-        }    
+        }            
+        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated                    
     }
 
     // Method  gets called by last frame of death animation
@@ -156,6 +159,11 @@ public class EnemyAI : MonoBehaviour
     private void PlayHitSound()
     {
         hitSoundEffect.Play();
+    }
+
+    private void PlayGotHitSound()
+    {
+        gotHitSoundEffect.Play();
     }
 
 }
