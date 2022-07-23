@@ -14,7 +14,8 @@ public class WinMenu : MonoBehaviour
     {
         TimeSpan t = TimeSpan.FromSeconds(globalOptions.GetSurvivedTime());
         string formattedTime = string.Format("{1:D2}m:{2:D2}s", t.Hours, t.Minutes, t.Seconds);
-        survivedTime.text = "" + formattedTime;        
+        Debug.Log(formattedTime);
+        survivedTime.text = "" + formattedTime;      
     }
 
     public void PlayGame()

@@ -39,7 +39,7 @@ public class SpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveCount = globalOptions.GetDifficulty() ? 1 : 10; //depending on difficulty
+        waveCount = globalOptions.GetDifficulty() ? 5 : 10; //depending on difficulty
         startWave();      
     }
 
