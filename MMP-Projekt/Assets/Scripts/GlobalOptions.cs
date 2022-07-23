@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GlobalOptions
 {
+    private float survivedTime = 0f;
+    public int survivedWaves { get; set; }
+
     private GlobalOptions()
     {
         // Prevent outside instantiation
@@ -25,5 +28,15 @@ public class GlobalOptions
 
     public bool GetDifficulty() {
         return isNormalDifficulty;
+    }
+
+    public void SetSurvivedTime(float time)
+    {
+        survivedTime = time;
+    }
+
+    public float GetSurvivedTime()
+    {
+        return survivedTime;
     }
 }

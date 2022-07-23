@@ -13,7 +13,8 @@ public class SpawnController : MonoBehaviour
 
     Wave currentWave;
     private int waveCount;
-    int currentWaveNumber = 0;  
+    int currentWaveNumber = 0;
+    public float time = 0f;
 
     private SpawnController() { }
 
@@ -37,13 +38,13 @@ public class SpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveCount = globalOptions.GetDifficulty() ? 5 : 10; //depending on difficulty
+        waveCount = globalOptions.GetDifficulty() ? 1 : 10; //depending on difficulty
         startWave();      
     }
 
     Wave SetWavesAndEnemies(bool isNormalDifficulty)
     {
-        int enemyCount = isNormalDifficulty ? 5 : 10;        
+        int enemyCount = isNormalDifficulty ? 1 : 10;        
         return new Wave(enemyCount, enemy);             
     }
 
@@ -58,6 +59,7 @@ public class SpawnController : MonoBehaviour
         }
         else
         {
+            globalOptions.SetSurvivedTime(time);
             SceneManager.LoadScene("Scenes/WinMenu");
         }
     }
@@ -65,11 +67,14 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        Debug.Log(time);
         //update wave counter or timer top right
     }
 
     void HandlePlayerDeath(PlayerController player)
     {
+        globalOptions.survivedWaves = currentWaveNumber-1;
         SceneManager.LoadScene("Scenes/DeathMenu");
     }
 

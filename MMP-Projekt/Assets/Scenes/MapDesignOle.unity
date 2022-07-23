@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1001700680252916064}
-  enemies: []
+  time: 0
 --- !u!1 &533254855
 GameObject:
   m_ObjectHideFlags: 0
@@ -64331,6 +64331,10 @@ PrefabInstance:
     - target: {fileID: 811411283608497563, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811411283608497566, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 811411283608497591, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
       propertyPath: m_Name

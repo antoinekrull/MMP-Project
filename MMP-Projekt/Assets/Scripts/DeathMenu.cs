@@ -9,10 +9,11 @@ public class DeathMenu : MonoBehaviour
     [SerializeField]
     public Text wavesSurvived;
     public string textValue;
+    GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
     public void Start()
     {
-        
+        wavesSurvived.text = "" + globalOptions.survivedWaves;
     }
 
     public void ReplayGame()
