@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,7 @@ public class SpawnController : MonoBehaviour
     Wave SetWavesAndEnemies(bool isNormalDifficulty)
     {
         int enemyCount = isNormalDifficulty ? 5 : 10;        
-        return new Wave(enemyCount, enemy);             
+        return new Wave(enemyCount);             
     }
 
 
@@ -66,6 +67,11 @@ public class SpawnController : MonoBehaviour
     void Update()
     {
         //update wave counter or timer top right
+        StartCoroutine(ExecuteAfterTime(0.8f, () =>
+        {
+            currentWave.SpawnEnemy(enemy);
+            currentWave.remainingEnemiesToSpawn--;
+        }));
     }
 
     void HandlePlayerDeath(PlayerController player)
@@ -88,16 +94,36 @@ public class SpawnController : MonoBehaviour
     {
         public int enemyCount;               
         public List<EnemyAI> enemies = new List<EnemyAI>();
+        public int remainingEnemiesToSpawn;
 
-        public Wave(int eC, EnemyAI enemy)
+        public void SpawnEnemy(EnemyAI enemy)
         {
-            enemyCount = eC;         
-
-            for(int i = 0; i < enemyCount; i++)
+            if(remainingEnemiesToSpawn > 0)
             {
-                EnemyAI spawnedEnemy = Instantiate(enemy, Vector2.zero, Quaternion.identity) as EnemyAI;
+                Vector2 position = new Vector2(0.5f, 12.5f);
+                EnemyAI spawnedEnemy = Instantiate(enemy, position, Quaternion.identity) as EnemyAI;
                 enemies.Add(spawnedEnemy);
-            }                       
+            }            
         }
+
+        public Wave(int eC)
+        {
+            enemyCount = eC;
+            remainingEnemiesToSpawn = eC;
+        }
+    }
+
+
+    private bool isCoroutineExecuting = false;
+    IEnumerator ExecuteAfterTime(float time, Action task)
+    {
+        if(isCoroutineExecuting)
+        {
+            yield break;
+        }
+        isCoroutineExecuting = true;
+        yield return new WaitForSeconds(time);
+        task();
+        isCoroutineExecuting = false;
     }
 }

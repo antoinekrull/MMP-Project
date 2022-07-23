@@ -674,7 +674,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1001700680252916064}
-  enemies: []
 --- !u!1 &533254855
 GameObject:
   m_ObjectHideFlags: 0
@@ -64294,11 +64293,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 811411283608497563, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.31
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 811411283608497563, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 12.55
       objectReference: {fileID: 0}
     - target: {fileID: 811411283608497563, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
       propertyPath: m_LocalPosition.z
