@@ -43,7 +43,7 @@ public class SpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveCount = globalOptions.GetDifficulty() ? 1 : 10; //depending on difficulty
+        waveCount = globalOptions.GetDifficulty() ? 5 : 10; //depending on difficulty
         StartWave();
     }
 
@@ -62,12 +62,6 @@ public class SpawnController : MonoBehaviour
             currentWaveNumber++;
             wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.remainingEnemies + " enemys left\n\n" + globalOptions.playerHealth + " health left";
         }
-
-        else if (currentWaveNumber == waveCount)
-        {
-            currentWave.SpawnFinalEnemy(enemy);
-        }
-
         else
         {
             globalOptions.SetSurvivedTime(survivedTime);
@@ -127,15 +121,6 @@ public class SpawnController : MonoBehaviour
                 remainingEnemiesToSpawn--;
             }            
         }
-
-        public void SpawnFinalEnemy(EnemyAI enemy)
-        {
-            EnemyAI spawnedFinalEnemy = Instantiate(enemy, globalOptions.GetDifficulty() ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;
-            Vector3 ls = spawnedFinalEnemy.gameObject.transform.localScale;
-            spawnedFinalEnemy.gameObject.transform.localScale = ls * 5;
-            enemies.Add(spawnedFinalEnemy);
-        }
-
         public Wave(int eC)
         {
             enemyCount = eC;
