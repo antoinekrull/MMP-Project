@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource bowSoundEffect;
     [SerializeField] private AudioSource stepSoundEffect;
     [SerializeField] private AudioSource hitSoundEffect;
+    [SerializeField] private AudioSource gotHitSoundEffect;
 
     void Start()
     {
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        PlayGotHitSound();
         health -= damageAmount;
         Debug.Log("Punk got hit. Health: " + health);
         anim.SetInteger("health", health); // If health < 1: death animation state gets activated            
@@ -136,5 +138,10 @@ public class PlayerController : MonoBehaviour
     private void PlayHitSound()
     {
         hitSoundEffect.Play();
+    }
+
+    private void PlayGotHitSound()
+    {
+        gotHitSoundEffect.Play();
     }
 }

@@ -10957,7 +10957,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0d00bfe33ebfe07429ebba37b02ffa9e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.102
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14449,6 +14449,11 @@ AudioSource:
 --- !u!82 &1524980251 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7288216359024077865, guid: b2ad86507df6242dbada91595df9868a, type: 3}
+  m_PrefabInstance: {fileID: 1954285835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1524980260 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4592195106139494674, guid: b2ad86507df6242dbada91595df9868a, type: 3}
   m_PrefabInstance: {fileID: 1954285835}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1706790662
@@ -64389,6 +64394,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4592195106139494674, guid: b2ad86507df6242dbada91595df9868a, type: 3}
+      propertyPath: m_Volume
+      value: 0.448
+      objectReference: {fileID: 0}
     - target: {fileID: 4854919429149725903, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: m_Controller
       value: 
@@ -64445,6 +64454,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 7288216359024077865, guid: b2ad86507df6242dbada91595df9868a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3becec1909f194046945d85ac1077772, type: 3}
     - target: {fileID: 7396383567119114590, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: health
       value: 100
@@ -64477,6 +64490,10 @@ PrefabInstance:
       propertyPath: stepSoundEffect
       value: 
       objectReference: {fileID: 1524980250}
+    - target: {fileID: 7396383567119114590, guid: b2ad86507df6242dbada91595df9868a, type: 3}
+      propertyPath: gotHitSoundEffect
+      value: 
+      objectReference: {fileID: 1524980260}
     - target: {fileID: 8109005220323573533, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: m_Name
       value: Punk_0

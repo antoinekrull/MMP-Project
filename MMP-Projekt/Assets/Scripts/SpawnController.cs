@@ -49,7 +49,7 @@ public class SpawnController : MonoBehaviour
 
     Wave SetWavesAndEnemies(bool isNormalDifficulty)
     {
-        int enemyCount = isNormalDifficulty ? 5 + currentWaveNumber * 3 : 5 + currentWaveNumber * 2;
+        int enemyCount = isNormalDifficulty ? 4 + currentWaveNumber * 2 : 5 + currentWaveNumber * 2;
         Debug.Log("Enemy Count: " + enemyCount);
         return new Wave(enemyCount);             
     }
@@ -77,7 +77,7 @@ public class SpawnController : MonoBehaviour
     {
         survivedTime += Time.deltaTime;        
         //update wave counter or timer top right
-        StartCoroutine(ExecuteAfterTime(ran.Next(2 , 10) * 0.2f, () =>
+        StartCoroutine(ExecuteAfterTime(ran.Next(3 , 18) * 0.2f, () =>
         {
             Debug.Log("Remaining Enemies to spawn: " + currentWave.remainingEnemiesToSpawn);
             currentWave.SpawnEnemy(enemy);
