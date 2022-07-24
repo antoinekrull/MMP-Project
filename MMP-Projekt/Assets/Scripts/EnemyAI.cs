@@ -9,8 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public int health, maxHealth = 1;
     public static event Action<EnemyAI> OnEnemyKilled;
-    public static event Action<EnemyAI> OnDamageTaken;
-
+    
     public float speed = 3.0f;
     public float checkRadius;
     public float attackRadius;
@@ -110,8 +109,8 @@ public class EnemyAI : MonoBehaviour
     {               
 
         if (circleCollider.IsTouching(playersBoxCollider) && !player.isDead)
-        {
-            player.TakeDamage(1);
+        {           
+            player.TakeDamage(ran.Next(3, 10));
         }
     }
 

@@ -12,15 +12,12 @@ public class Arrow : MonoBehaviour
     void Update()
     {
         Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
-        Vector2 newPositon = currentPosition + velocity * Time.deltaTime;
-
-        Debug.DrawLine(currentPosition, newPositon, Color.red);
+        Vector2 newPositon = currentPosition + velocity * Time.deltaTime;        
 
         RaycastHit2D[] hits = Physics2D.LinecastAll(currentPosition, newPositon);
         foreach(RaycastHit2D hit in hits)
         {
-            GameObject other = hit.collider.gameObject;
-            Debug.Log(hit.collider);
+            GameObject other = hit.collider.gameObject;            
             if(other != player)
             {
                 if(hit.collider.Equals(other.GetComponent<BoxCollider2D>()))
@@ -36,11 +33,8 @@ public class Arrow : MonoBehaviour
                     Destroy(gameObject);
                     break;
                 }
-
-            }
-            
+            }            
         }
-
         transform.position = newPositon;
     }
 }

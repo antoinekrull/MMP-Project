@@ -49,18 +49,15 @@ public class SpawnController : MonoBehaviour
 
     Wave SetWavesAndEnemies(bool isNormalDifficulty)
     {
-        int enemyCount = isNormalDifficulty ? 4 + currentWaveNumber * 2 : 5 + currentWaveNumber * 2;
-        Debug.Log("Enemy Count: " + enemyCount);
+        int enemyCount = isNormalDifficulty ? 4 + currentWaveNumber * 2 : 5 + currentWaveNumber * 2;        
         return new Wave(enemyCount);             
     }
 
 
     void StartWave()
-    {
-        Debug.Log(currentWaveNumber);
+    {        
         if (currentWaveNumber < waveCount)
-        {
-            Debug.Log("New wave was set");
+        {            
             currentWave = SetWavesAndEnemies(globalOptions.GetDifficulty());
             currentWaveNumber++;
             wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.remainingEnemies + " enemys left\n\n" + globalOptions.playerHealth + " health left";
@@ -78,13 +75,8 @@ public class SpawnController : MonoBehaviour
         survivedTime += Time.deltaTime;        
         //update wave counter or timer top right
         StartCoroutine(ExecuteAfterTime(ran.Next(3 , 15) * 0.2f, () =>
-        {
-            Debug.Log("Remaining Enemies to spawn: " + currentWave.remainingEnemiesToSpawn);
-            currentWave.SpawnEnemy(enemy);
-            if(currentWave.remainingEnemiesToSpawn > 0)
-            {
-                currentWave.remainingEnemiesToSpawn--;
-            }           
+        {            
+            currentWave.SpawnEnemy(enemy);                    
         }));        
         wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.remainingEnemies + " enemys left\n\n" + globalOptions.playerHealth + " health left";
     }
@@ -102,7 +94,11 @@ public class SpawnController : MonoBehaviour
             currentWave.remainingEnemies--;
             if (currentWave.enemies.Count == 0)
             {
-                StartWave();
+                StartCoroutine(DelayWave(2f, () =>
+                {
+                    StartWave();
+                }));
+                
             }
         }
     }
@@ -122,6 +118,7 @@ public class SpawnController : MonoBehaviour
             {                
                 EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.GetDifficulty() ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;
                 enemies.Add(spawnedEnemy);
+                remainingEnemiesToSpawn--;
             }            
         }
 
@@ -136,7 +133,7 @@ public class SpawnController : MonoBehaviour
 
     private bool isCoroutineExecuting = false;
     IEnumerator ExecuteAfterTime(float time, Action task)
-    {
+    {      
         if(isCoroutineExecuting)
         {
             yield break;
@@ -145,5 +142,18 @@ public class SpawnController : MonoBehaviour
         yield return new WaitForSeconds(time);
         task();
         isCoroutineExecuting = false;
+    }
+
+    private bool isDelayWaveExecuting = false;
+    IEnumerator DelayWave(float time, Action task)
+    {
+        if (isDelayWaveExecuting)
+        {
+            yield break;
+        }
+        isDelayWaveExecuting = true;
+        yield return new WaitForSeconds(time);
+        task();
+        isDelayWaveExecuting = false;
     }
 }

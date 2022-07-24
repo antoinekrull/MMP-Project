@@ -10,6 +10,8 @@ public class StartMenu : MonoBehaviour
     private GlobalOptions globalOptions = GlobalOptions.GetInstance();
     public void PlayGame()
     {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        Resources.UnloadUnusedAssets();       
         SceneManager.LoadScene("Scenes/MapDesignOle");
     }
 
@@ -25,7 +27,6 @@ public class StartMenu : MonoBehaviour
 
     public void DifficultySelector()
     {
-        globalOptions.SetDifficulty(!globalOptions.GetDifficulty());
-        Debug.Log(globalOptions.GetDifficulty());
+        globalOptions.SetDifficulty(!globalOptions.GetDifficulty());        
     }
 }

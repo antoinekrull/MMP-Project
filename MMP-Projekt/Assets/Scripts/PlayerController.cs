@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;    
 
-    public static event Action<PlayerController> OnPlayerDeath;
-    public static event Action<PlayerController> OnDamageTaken;
+    public static event Action<PlayerController> OnPlayerDeath;    
 
     private Vector2 movementDirection;
     private float horizontal;
@@ -86,8 +85,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         PlayGotHitSound();
-        health -= damageAmount;
-        Debug.Log("Punk got hit. Health: " + health);
+        health -= damageAmount;        
         anim.SetInteger("health", health); // If health < 1: death animation state gets activated            
         isDead = health <= 0;
         canMove = health >= 1;
