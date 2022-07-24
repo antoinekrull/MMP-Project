@@ -77,7 +77,7 @@ public class SpawnController : MonoBehaviour
     {
         survivedTime += Time.deltaTime;        
         //update wave counter or timer top right
-        StartCoroutine(ExecuteAfterTime(ran.Next(3 , 18) * 0.2f, () =>
+        StartCoroutine(ExecuteAfterTime(ran.Next(3 , 15) * 0.2f, () =>
         {
             Debug.Log("Remaining Enemies to spawn: " + currentWave.remainingEnemiesToSpawn);
             currentWave.SpawnEnemy(enemy);
