@@ -56,12 +56,12 @@ public class PlayerController : MonoBehaviour
     // Adjust animation state
     private void Animate()
     {
-        if (Input.GetKey(KeyCode.L)) // Listen for attack button input
+        if (Input.GetKey(KeyCode.L) && !isDead) // Listen for attack button input
         {
             anim.SetBool("isAttackingBow", true);     // Change animation state to "Combat"
             canMove = false; // Disable player movement - player should not be moving while attacking          
         }
-        else if (Input.GetKey(KeyCode.K)) // Listen for attack button input
+        else if (Input.GetKey(KeyCode.K) && !isDead) // Listen for attack button input
         {
             anim.SetBool("isAttackingShovel", true);     // Change animation state to "Combat"
             canMove = false;    // Disable player movement - player should not be moving while attacking
