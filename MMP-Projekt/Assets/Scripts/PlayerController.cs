@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementDirection;
     private float horizontal;
     private float vertical;
-    private bool canMove = false;
+    public bool canMove = false;
 
     public int health, maxHealth = 3;
     public bool isDead = false;  
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("x", horizontal);
             anim.SetFloat("y", vertical);
         }
-        anim.SetFloat("speed", movementDirection.magnitude);
+        if (canMove) anim.SetFloat("speed", movementDirection.magnitude);
     }
 
     // Method gets called by the last frame of the attack animation
