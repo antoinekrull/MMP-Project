@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     public bool canMove = false;
 
+    GlobalOptions globalOptions = GlobalOptions.GetInstance();
+
     public int health, maxHealth = 3;
     public bool isDead = false;  
 
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();        
         anim.SetInteger("health", health);
+        globalOptions.playerHealth = health;
     }
 
     void Update()
@@ -101,6 +104,7 @@ public class PlayerController : MonoBehaviour
         anim.SetInteger("health", health); // If health < 1: death animation state gets activated            
         isDead = health <= 0;
         canMove = health >= 1;
+        globalOptions.playerHealth = health >= 0 ? health : 0;
     }
 
     private void Die()

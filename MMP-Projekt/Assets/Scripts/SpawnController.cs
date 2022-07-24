@@ -44,7 +44,7 @@ public class SpawnController : MonoBehaviour
     void Start()
     {
         waveCount = globalOptions.GetDifficulty() ? 5 : 10; //depending on difficulty
-        StartWave();      
+        StartWave();
     }
 
     Wave SetWavesAndEnemies(bool isNormalDifficulty)
@@ -63,7 +63,7 @@ public class SpawnController : MonoBehaviour
             Debug.Log("New wave was set");
             currentWave = SetWavesAndEnemies(globalOptions.GetDifficulty());
             currentWaveNumber++;
-            wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.enemies.Count + " enemys left";
+            wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.enemies.Count + " enemys left\n\n" + globalOptions.playerHealth + " health left";
         }
         else
         {
@@ -85,8 +85,8 @@ public class SpawnController : MonoBehaviour
             {
                 currentWave.remainingEnemiesToSpawn--;
             }           
-        }));
-        wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.enemies.Count + " enemys left";
+        }));        
+        wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.enemies.Count + " enemys left\n\n" + globalOptions.playerHealth + " health left";
     }
 
     void HandlePlayerDeath(PlayerController player)

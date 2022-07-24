@@ -64268,8 +64268,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.693719, y: 0.73836046}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: 15}
-  m_SizeDelta: {x: -46, y: -60.200012}
+  m_AnchoredPosition: {x: 10, y: -45.167297}
+  m_SizeDelta: {x: -46, y: 60.1345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1911769506
 MonoBehaviour:
@@ -64306,7 +64306,10 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'x waves left
 
-    x enemys left'
+    x enemys left
+
+
+    x health left'
 --- !u!222 &1911769507
 CanvasRenderer:
   m_ObjectHideFlags: 0
