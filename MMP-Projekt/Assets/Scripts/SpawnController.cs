@@ -17,6 +17,7 @@ public class SpawnController : MonoBehaviour
     private int waveCount;
     int currentWaveNumber = 0;
     public float survivedTime = 0f;
+    public System.Random ran = new System.Random();
 
     public Text wavesEnemysLeft;
 
@@ -48,7 +49,8 @@ public class SpawnController : MonoBehaviour
 
     Wave SetWavesAndEnemies(bool isNormalDifficulty)
     {
-        int enemyCount = isNormalDifficulty ? 5 : 10;        
+        int enemyCount = isNormalDifficulty ? 5 + currentWaveNumber * 3 : 5 + currentWaveNumber * 2;
+        Debug.Log("Enemy Count: " + enemyCount);
         return new Wave(enemyCount);             
     }
 
@@ -75,7 +77,7 @@ public class SpawnController : MonoBehaviour
     {
         survivedTime += Time.deltaTime;        
         //update wave counter or timer top right
-        StartCoroutine(ExecuteAfterTime(0.8f, () =>
+        StartCoroutine(ExecuteAfterTime(ran.Next(2 , 10) * 0.2f, () =>
         {
             Debug.Log("Remaining Enemies to spawn: " + currentWave.remainingEnemiesToSpawn);
             currentWave.SpawnEnemy(enemy);
@@ -110,13 +112,14 @@ public class SpawnController : MonoBehaviour
         public int enemyCount;               
         public List<EnemyAI> enemies = new List<EnemyAI>();
         public int remainingEnemiesToSpawn;
+        GlobalOptions globalOptions = GlobalOptions.GetInstance();
+        private System.Random ran = new System.Random();
 
         public void SpawnEnemy(EnemyAI enemy)
         {
             if(remainingEnemiesToSpawn > 0)
-            {
-                Vector2 position = new Vector2(0.5f, 12.5f);
-                EnemyAI spawnedEnemy = Instantiate(enemy, position, Quaternion.identity) as EnemyAI;
+            {                
+                EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.GetDifficulty() ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;
                 enemies.Add(spawnedEnemy);
             }            
         }
