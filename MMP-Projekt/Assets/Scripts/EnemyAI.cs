@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         Animate();
-        VarifyHitFromPlayer();
+        VerifyHitFromPlayer();
     }
 
     // set animation state
@@ -98,7 +98,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void VarifyHitFromPlayer()
+    private void VerifyHitFromPlayer()
     {
         if (enemysBoxCollider.IsTouching(playersShovelCollider) && !player.isDead)
         {
@@ -106,7 +106,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void VarifyHitAgainstPlayer()
+    private void VerifyHitAgainstPlayer()
     {               
 
         if (circleCollider.IsTouching(playersBoxCollider) && !player.isDead)

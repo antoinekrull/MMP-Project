@@ -63,7 +63,7 @@ public class SpawnController : MonoBehaviour
             Debug.Log("New wave was set");
             currentWave = SetWavesAndEnemies(globalOptions.GetDifficulty());
             currentWaveNumber++;
-            wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.enemies.Count + " enemys left\n\n" + globalOptions.playerHealth + " health left";
+            wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.remainingEnemies + " enemys left\n\n" + globalOptions.playerHealth + " health left";
         }
         else
         {
@@ -86,7 +86,7 @@ public class SpawnController : MonoBehaviour
                 currentWave.remainingEnemiesToSpawn--;
             }           
         }));        
-        wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.enemies.Count + " enemys left\n\n" + globalOptions.playerHealth + " health left";
+        wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.remainingEnemies + " enemys left\n\n" + globalOptions.playerHealth + " health left";
     }
 
     void HandlePlayerDeath(PlayerController player)
@@ -99,9 +99,9 @@ public class SpawnController : MonoBehaviour
     {
         if (currentWave.enemies.Remove(enemy))
         {
+            currentWave.remainingEnemies--;
             if (currentWave.enemies.Count == 0)
             {
-                Debug.Log("Wave survived");
                 StartWave();
             }
         }
@@ -114,6 +114,7 @@ public class SpawnController : MonoBehaviour
         public int remainingEnemiesToSpawn;
         GlobalOptions globalOptions = GlobalOptions.GetInstance();
         private System.Random ran = new System.Random();
+        public int remainingEnemies;
 
         public void SpawnEnemy(EnemyAI enemy)
         {
@@ -128,6 +129,7 @@ public class SpawnController : MonoBehaviour
         {
             enemyCount = eC;
             remainingEnemiesToSpawn = eC;
+            remainingEnemies = eC;
         }
     }
 

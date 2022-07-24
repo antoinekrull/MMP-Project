@@ -83,21 +83,6 @@ public class PlayerController : MonoBehaviour
         canMove = health >= 1; // Enable player movement        
     }
 
-    /* Immer nur ein Enemy angreifbar :(
-    private void CheckHitbox()
-    {
-        GameObject enemyObject = GameObject.FindWithTag("Hitbox Enemy");
-        EnemyAI enemy = enemyObject.GetComponent<EnemyAI>();
-        BoxCollider2D enemysBoxCollider = enemyObject.GetComponent<BoxCollider2D>();
-
-        if (enemyObject != null && playersShovelCollider.IsTouching(enemysBoxCollider))
-        {
-            enemy.TakeDamage(1);            
-        }
-    }
-    */
-
-
     public void TakeDamage(int damageAmount)
     {
         PlayGotHitSound();
