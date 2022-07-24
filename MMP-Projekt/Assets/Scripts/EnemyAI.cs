@@ -110,8 +110,8 @@ public class EnemyAI : MonoBehaviour
     {               
 
         if (circleCollider.IsTouching(playersBoxCollider) && !player.isDead)
-        {
-            player.TakeDamage(1);
+        {           
+            player.TakeDamage(ran.Next(3, 10));
         }
     }
 
