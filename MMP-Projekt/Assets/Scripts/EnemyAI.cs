@@ -63,8 +63,8 @@ public class EnemyAI : MonoBehaviour
 
         if (!isInChaseRange && !isInAttackRange) // if enemy is too far from player to chase/attack:
         {
-            speed = 0.6f; // set speed slower because enemy is not chasing after player but taking a nice smooth walk
-            anim.SetFloat("animationSpeed", 0.4f);
+            speed = 1f; // set speed slower because enemy is not chasing after player but taking a nice smooth walk
+            anim.SetFloat("animationSpeed", 0.6f);
             TakeAWalk();
         }
         else
@@ -130,7 +130,6 @@ public class EnemyAI : MonoBehaviour
         }            
         health -= damageAmount;
         canMove = health >= 1;
-        Debug.Log(canMove);
         anim.SetInteger("health", health); // If health <= 0: death animation state gets activated                    
     }
 
