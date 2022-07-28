@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-// Takes and handles input and movement for a player character
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -27,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource bowSoundEffect;
     [SerializeField] private AudioSource stepSoundEffect;
     [SerializeField] private AudioSource hitSoundEffect;
+    [SerializeField] private AudioSource gotHitSoundEffect;
 
     void Start()
     {
@@ -37,8 +37,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-        // Get movement input from arrow keys or wasd
+    {      
         horizontal = Input.GetAxisRaw("Horizontal");    // -1 for left or 1 for right 
         vertical = Input.GetAxisRaw("Vertical"); // -1 for down or 1 for up
         movementDirection = new Vector2(horizontal, vertical).normalized;   // Normalize vector, so that magnitude stays 1 while moving diagonally
@@ -46,10 +45,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        // Move the player gameobject - if allowed
-        rb.velocity = canMove ? movementDirection * runSpeed : Vector2.zero; // by using force
-        // rb.MovePosition((Vector2)transform.position + Time.deltaTime * runSpeed * movementDirection); // by using positioning
+    {        
+        rb.velocity = canMove ? movementDirection * runSpeed : Vector2.zero; // Move the player gameobject - if allowed
     }
 
     // Adjust animation state
@@ -59,21 +56,25 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isAttackingBow", true);     // Change animation state to "Combat"
             canMove = false; // Disable player movement - player should not be moving while attacking          
-        }
-        else if (Input.GetKey(KeyCode.K)) // Listen for attack button input
+        }        
+        else if (Input.GetKey(KeyCode.K) && !isDead)
         {
-            anim.SetBool("isAttackingShovel", true);     // Change animation state to "Combat"
-            canMove = false;    // Disable player movement - player should not be moving while attacking
+            anim.SetBool("isAttackingShovel", true);     
+            canMove = false;    
         }
-        if (movementDirection != Vector2.zero && canMove)
+
+        if (canMove)
         {
-            anim.SetFloat("x", horizontal);
-            anim.SetFloat("y", vertical);
+            if (movementDirection != Vector2.zero)
+            {
+                anim.SetFloat("x", horizontal);
+                anim.SetFloat("y", vertical);
+            }
+            anim.SetFloat("speed", movementDirection.magnitude);
         }
-        anim.SetFloat("speed", movementDirection.magnitude);
     }
 
-    // Method gets called by the last frame of the attack animation
+    // Method gets called by the last attack animation frame
     private void EndAttack()
     {
         anim.SetBool("isAttackingShovel", false); // Change animation state from "Combat" to "Movement"
@@ -102,9 +103,8 @@ public class PlayerController : MonoBehaviour
         OnPlayerDeath?.Invoke(this);
     }
 
-    private void PlayBowSound()
+    private void ShootArrow()
     {
-        bowSoundEffect.Play();
         float x = anim.GetFloat("x");
         float y = anim.GetFloat("y");
         GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
@@ -117,13 +117,15 @@ public class PlayerController : MonoBehaviour
         Destroy(arrow, 5.0f);
     }
 
-    private void PlayStepSound()
+    private void PlayBowSound()
     {
-        stepSoundEffect.Play();
+        bowSoundEffect.Play();
+        ShootArrow();
     }
 
-    private void PlayHitSound()
-    {
-        hitSoundEffect.Play();
-    }
+    private void PlayStepSound() { stepSoundEffect.Play(); }
+
+    private void PlayHitSound() { hitSoundEffect.Play(); }
+
+    private void PlayGotHitSound() { gotHitSoundEffect.Play(); }
 }

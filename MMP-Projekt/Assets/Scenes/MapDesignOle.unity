@@ -10943,6 +10943,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &1117440365
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298843400018396184, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2297023030967280360, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
+      propertyPath: m_Name
+      value: JustusEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20981fffa3b3a1245add58824c8a70f6, type: 3}
 --- !u!1 &1226515638
 GameObject:
   m_ObjectHideFlags: 0
@@ -64208,7 +64265,7 @@ PrefabInstance:
     - target: {fileID: 7172981812492047311, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1282636761, guid: c148d17b77a694a27906d64c17615653, type: 3}
+      objectReference: {fileID: 953615235, guid: 258f3ffcbcd2f4b3c816832f6d1f9cbc, type: 3}
     - target: {fileID: 7172981812492047311, guid: b2ad86507df6242dbada91595df9868a, type: 3}
       propertyPath: m_SortingOrder
       value: -3

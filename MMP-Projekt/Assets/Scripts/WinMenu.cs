@@ -7,8 +7,8 @@ using System;
 
 public class WinMenu : MonoBehaviour
 {
-    GlobalOptions globalOptions = GlobalOptions.GetInstance();
     public Text survivedTime;
+    GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
     public void Start()
     {

@@ -7,25 +7,24 @@ using UnityEngine;
 public class CameraMotor : MonoBehaviour
 {
 
-    public GameObject target;
-    public Vector4 border = new Vector4(10, 10, -10, -10); // right - top - left - down
-    private float x;
-    private float y;
+    public GameObject target; // = player
+    [SerializeField] Vector4 border; // right - top - left - down (player position)
+    private float x, y;
 
     void LateUpdate()
     {         
         if (target)
-        {            
-            x = target.transform.position.x;
+        {
+            x = target.transform.position.x; // get pos of player
             y = target.transform.position.y;
 
-            if (x > border.x) x = border.x;
+            if (x > border.x) x = border.x; // if pos is greater than border, use border
             else if (x < border.z) x = border.z;
 
             if (y > border.y) y = border.y;
             else if (y < border.w) y = border.w;
 
-            transform.position = new Vector3(x, y, -10);
+            transform.position = new Vector3(x, y, -10); // set cameras new pos
         }
     }
 
