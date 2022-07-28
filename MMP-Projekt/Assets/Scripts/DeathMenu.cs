@@ -21,6 +21,6 @@ public class DeathMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Scenes/StartMenu");
     }
 }

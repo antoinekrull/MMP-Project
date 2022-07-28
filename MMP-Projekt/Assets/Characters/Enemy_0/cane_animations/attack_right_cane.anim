@@ -392,7 +392,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.5
-    functionName: CheckHitbox
+    functionName: VerifyHitAgainstPlayer
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

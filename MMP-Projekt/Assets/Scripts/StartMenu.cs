@@ -11,6 +11,8 @@ public class StartMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        Resources.UnloadUnusedAssets();       
         SceneManager.LoadScene("Scenes/MapDesignOle");
     }
 

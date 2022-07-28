@@ -16,13 +16,12 @@ public class PlayerHealth : MonoBehaviour
     {
         health += mod;
 
-        if (health> maxHealth)
+        if (health > maxHealth)
         {
             health = maxHealth;
         } else if (health <= 0)
         {
-            health = 0f;
-            Debug.Log("Player Respawn");
+            health = 0f;           
         }
     }
 

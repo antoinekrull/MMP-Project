@@ -7,6 +7,7 @@ public class GlobalOptions
 {
     private float survivedTime = 0f;
     public int survivedWaves { get; set; }
+    public int playerHealth { get; set; }
 
     private GlobalOptions()
     {

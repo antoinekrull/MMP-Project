@@ -1,0 +1,14 @@
+sprites - ole, marcel
+sound - marcel
+spawn system - antoine
+animations - ole
+map - ole, marcel
+enemies - leon
+health & damage - leon
+menus - antoine, marcel
+movement - ole, leon
+difficülty - antoine
+combat - ole, leon, antoine, marcel
+video - ole
+
+grobe arbeitsaufteilung, generell wurde viel coworking auf discord gemacht

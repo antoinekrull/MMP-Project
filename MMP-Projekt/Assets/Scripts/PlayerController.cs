@@ -6,19 +6,19 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Animator anim;
-    private CircleCollider2D cc;
+    private Animator anim;    
 
-    public static event Action<PlayerController> OnPlayerDeath;
-    public static event Action<PlayerController> OnDamageTaken;
+    public static event Action<PlayerController> OnPlayerDeath;    
 
     private Vector2 movementDirection;
     private float horizontal;
     private float vertical;
-    private bool canMove = false;
+    public bool canMove = false;
+
+    GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
     public int health, maxHealth = 3;
-    public bool isDead = false;
+    public bool isDead = false;  
 
     public GameObject arrowPrefab;
 
@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        cc = GetComponent<CircleCollider2D>();
+        anim = GetComponent<Animator>();        
         anim.SetInteger("health", health);
+        globalOptions.playerHealth = health;
     }
 
     void Update()
@@ -52,10 +52,10 @@ public class PlayerController : MonoBehaviour
     // Adjust animation state
     private void Animate()
     {
-        if (Input.GetKey(KeyCode.L)) // Listen for attack button input
+        if (Input.GetKey(KeyCode.L) && !isDead) // Listen for attack button input
         {
             anim.SetBool("isAttackingBow", true);     // Change animation state to "Combat"
-            canMove = false; // Disable player movement - player should not be moving while attacking          
+            canMove = false; // Disable player movement - player should not be moving while attacking
         }        
         else if (Input.GetKey(KeyCode.K) && !isDead)
         {
@@ -72,29 +72,23 @@ public class PlayerController : MonoBehaviour
             }
             anim.SetFloat("speed", movementDirection.magnitude);
         }
-    }
 
     // Method gets called by the last attack animation frame
     private void EndAttack()
     {
         anim.SetBool("isAttackingShovel", false); // Change animation state from "Combat" to "Movement"
         anim.SetBool("isAttackingBow", false); // Change animation state from "Combat" to "Movement"
-        canMove = true;     // Enable player movement        
+        canMove = health >= 1; // Enable player movement        
     }
-
 
     public void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
-        Debug.Log("Punk got hit. Health: " + health);
-        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated    
-        /* if (health <= 0)
-        {
-            isDead = true;
-            return;
-        } */
+        PlayGotHitSound();
+        health -= damageAmount;        
+        anim.SetInteger("health", health); // If health < 1: death animation state gets activated            
         isDead = health <= 0;
         canMove = health >= 1;
+        globalOptions.playerHealth = health >= 0 ? health : 0;
     }
 
     private void Die()

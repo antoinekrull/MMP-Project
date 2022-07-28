@@ -32,15 +32,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.4
         value: -0.7
-        inSlope: -0.8000003
-        outSlope: -0.8000003
+        inSlope: -1.28
+        outSlope: -1.28
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -0.8
+        value: -0.86
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -204,15 +204,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.4
         value: -0.7
-        inSlope: -0.8000003
-        outSlope: -0.8000003
+        inSlope: -1.28
+        outSlope: -1.28
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -0.8
+        value: -0.86
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -293,7 +293,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.5
-    functionName: CheckHitbox
+    functionName: VerifyHitAgainstPlayer
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -9,8 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public int health, maxHealth = 1;
     public static event Action<EnemyAI> OnEnemyKilled;
-    public static event Action<EnemyAI> OnDamageTaken;
-
+    
     public float speed = 3.0f;
     public float checkRadius;
     public float attackRadius;
@@ -31,21 +30,28 @@ public class EnemyAI : MonoBehaviour
 
     private float stopwatch = 0f;
 
-    private BoxCollider2D playerCollider;
+    private BoxCollider2D playersBoxCollider;
+    private CircleCollider2D playersShovelCollider;
+    private BoxCollider2D enemysBoxCollider;
     private CircleCollider2D circleCollider;
     private System.Random ran = new System.Random();
 
     [SerializeField] private AudioSource stepSoundEffect;
     [SerializeField] private AudioSource hitSoundEffect;
+    [SerializeField] private AudioSource gotHitSoundEffect;
 
 
     private void Start()
     {
+        playerGameObject = GameObject.FindWithTag("Player");
+        player = playerGameObject.GetComponent<PlayerController>();
+        playersBoxCollider = player.GetComponent<BoxCollider2D>();
+        enemysBoxCollider = GetComponent<BoxCollider2D>();
+        playersShovelCollider = player.GetComponent<CircleCollider2D>();
         health = maxHealth;        
         circleCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        playerGameObject = GameObject.FindWithTag("Player");
         target = playerGameObject.transform;
     }
 
@@ -56,8 +62,8 @@ public class EnemyAI : MonoBehaviour
 
         if (!isInChaseRange && !isInAttackRange) // if enemy is too far from player to chase/attack:
         {
-            speed = 0.6f; // set speed slower because enemy is not chasing after player but taking a nice smooth walk
-            anim.SetFloat("animationSpeed", 0.4f);
+            speed = 1f; // set speed slower because enemy is not chasing after player but taking a nice smooth walk
+            anim.SetFloat("animationSpeed", 0.6f);
             TakeAWalk();
         }
         else
@@ -68,6 +74,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         Animate();
+        VerifyHitFromPlayer();
     }
 
     // set animation state
@@ -90,14 +97,20 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void CheckHitbox()
+    private void VerifyHitFromPlayer()
     {
-        player = playerGameObject.GetComponent<PlayerController>();
-        playerCollider = player.GetComponent<BoxCollider2D>();
-
-        if (circleCollider.IsTouching(playerCollider) && !player.isDead)
+        if (enemysBoxCollider.IsTouching(playersShovelCollider) && !player.isDead)
         {
-            player.TakeDamage(1);
+            TakeDamage(1);
+        }
+    }
+
+    private void VerifyHitAgainstPlayer()
+    {               
+
+        if (circleCollider.IsTouching(playersBoxCollider) && !player.isDead)
+        {           
+            player.TakeDamage(ran.Next(3, 10));
         }
     }
 
@@ -108,12 +121,15 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        if(gameObject != null)
+        {
+            PlayGotHitSound();
+
+            anim.SetInteger("health", health); // If health <= 0: death animation state gets activated               
+        }            
         health -= damageAmount;
         canMove = health >= 1;
-
-        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated               
-
-        //OnDamageTaken.Invoke(this);       
+        anim.SetInteger("health", health); // If health <= 0: death animation state gets activated                    
     }
 
     // Method  gets called by last frame of death animation
@@ -139,7 +155,7 @@ public class EnemyAI : MonoBehaviour
     private void EndAttack()
     {
         anim.SetBool("isAttacking", false);
-        canMove = true;
+        canMove = health >= 1;
         if (movement != Vector2.zero)
         {
             anim.SetFloat("x", movement.x);
@@ -155,6 +171,11 @@ public class EnemyAI : MonoBehaviour
     private void PlayHitSound()
     {
         hitSoundEffect.Play();
+    }
+
+    private void PlayGotHitSound()
+    {
+        gotHitSoundEffect.Play();
     }
 
 }
