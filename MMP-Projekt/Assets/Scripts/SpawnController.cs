@@ -111,16 +111,29 @@ public class SpawnController : MonoBehaviour
         GlobalOptions globalOptions = GlobalOptions.GetInstance();
         private System.Random ran = new System.Random();
         public int remainingEnemies;
+        public bool isFinalWave;
 
         public void SpawnEnemy(EnemyAI enemy)
         {
             if(remainingEnemiesToSpawn > 0)
-            {                
-                EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.GetDifficulty() ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;
+            {
+                EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.GetDifficulty() ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;                             
                 enemies.Add(spawnedEnemy);
-                remainingEnemiesToSpawn--;
+                remainingEnemiesToSpawn--;                
             }            
         }
+
+        public void SpawnBossEnemy(EnemyAI enemy)
+        {
+            EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.GetDifficulty() ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;
+            Vector3 localScale = spawnedEnemy.gameObject.transform.localScale;
+            spawnedEnemy.maxHealth = 3;
+            spawnedEnemy.attackRadius = 4;
+            spawnedEnemy.gameObject.transform.localScale = localScale * 3;
+            remainingEnemies++;
+            enemies.Add(spawnedEnemy);
+        }
+
         public Wave(int eC)
         {
             enemyCount = eC;
