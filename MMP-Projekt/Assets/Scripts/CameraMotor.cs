@@ -1,23 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class CameraMotor : MonoBehaviour
 {
+    //PauseMenu
+    public GameObject pauseMenu;
+    GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
-    public GameObject target;
+    //CameraCoordinates
+    public GameObject player;
     public Vector4 border = new Vector4(10, 10, -10, -10); // right - top - left - down
     private float x;
     private float y;
 
-    void LateUpdate()
+    void LateUpdate() // check camera bounds
     {         
-        if (target)
+        if (player)
         {            
-            x = target.transform.position.x;
-            y = target.transform.position.y;
+            x = player.transform.position.x;
+            y = player.transform.position.y;
 
             if (x > border.x) x = border.x;
             else if (x < border.z) x = border.z;
@@ -29,5 +34,25 @@ public class CameraMotor : MonoBehaviour
         }
     }
 
+    // Ingame pause menu:
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) TogglePauseMenu();
+    }
+
+    public void TogglePauseMenu()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        player.GetComponent<PlayerController>().canMove = !player.GetComponent<PlayerController>().canMove;
+    }
+
+    public void QuitGame()
+    {
+        TogglePauseMenu();
+        globalOptions.gameState = (int)GlobalOptions.gameStates.start;
+        Resources.UnloadUnusedAssets();
+        SceneManager.LoadScene("Scenes/GameMenus");
+    }
 }

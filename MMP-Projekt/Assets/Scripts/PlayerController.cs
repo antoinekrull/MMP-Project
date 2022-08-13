@@ -15,8 +15,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
     public bool canMove = false;
-
-    GlobalOptions globalOptions = GlobalOptions.GetInstance();
+    readonly GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
     public int health, maxHealth = 3;
     public bool isDead = false;  

@@ -6,10 +6,8 @@ using UnityEngine.UI;
 
 public class DeathMenu : MonoBehaviour
 {
-    [SerializeField]
+    readonly GlobalOptions globalOptions = GlobalOptions.GetInstance();
     public Text wavesSurvived;
-    public string textValue;
-    GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
     public void Start()
     {
@@ -18,16 +16,15 @@ public class DeathMenu : MonoBehaviour
 
     public void ReplayGame()
     {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Scenes/MapDesignOle");
     }
 
     public void QuitGame()
     {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Scenes/StartMenu");
-    }
-
-    public void Update()
-    {
-        //wavesSurvived.text = textValue;
     }
 }

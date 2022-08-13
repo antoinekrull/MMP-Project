@@ -11,7 +11,7 @@ public class SpawnController : MonoBehaviour
     private static readonly SpawnController _instance = new SpawnController();   
  
     public EnemyAI enemy; //needed to instantiate enemy objects   
-    GlobalOptions globalOptions = GlobalOptions.GetInstance();
+    readonly GlobalOptions globalOptions = GlobalOptions.GetInstance();
 
     Wave currentWave;
     private int waveCount;
@@ -25,7 +25,7 @@ public class SpawnController : MonoBehaviour
 
     public static SpawnController GetInstance()
     {
-        return _instance;
+        return Instance;
     }
 
     private void OnEnable()
@@ -43,7 +43,7 @@ public class SpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveCount = globalOptions.GetDifficulty() ? 5 : 10; //depending on difficulty
+        waveCount = globalOptions.isNormalDifficulty ? 5 : 10; //depending on difficulty
         StartWave();
     }
 
@@ -58,14 +58,16 @@ public class SpawnController : MonoBehaviour
     {        
         if (currentWaveNumber < waveCount)
         {            
-            currentWave = SetWavesAndEnemies(globalOptions.GetDifficulty());
+            currentWave = SetWavesAndEnemies(globalOptions.isNormalDifficulty);
             currentWaveNumber++;
             wavesEnemysLeft.text = waveCount - currentWaveNumber + 1 + " waves left\n" + currentWave.remainingEnemies + " enemys left\n\n" + globalOptions.playerHealth + " health left";
         }
         else
         {
-            globalOptions.SetSurvivedTime(survivedTime);
-            SceneManager.LoadScene("Scenes/WinMenu");
+            globalOptions.survivedTime = survivedTime;
+            globalOptions.gameState = (int)GlobalOptions.gameStates.victory;
+               Resources.UnloadUnusedAssets();
+            SceneManager.LoadScene("Scenes/GameMenus");
         }        
     }
 
@@ -84,7 +86,9 @@ public class SpawnController : MonoBehaviour
     void HandlePlayerDeath(PlayerController player)
     {
         globalOptions.survivedWaves = currentWaveNumber-1;
-        SceneManager.LoadScene("Scenes/DeathMenu");
+        globalOptions.gameState = (int)GlobalOptions.gameStates.defeat;
+        Resources.UnloadUnusedAssets();
+        SceneManager.LoadScene("Scenes/GameMenus");
     }
 
     void HandleEnemyDefeated(EnemyAI enemy)
@@ -117,7 +121,7 @@ public class SpawnController : MonoBehaviour
         {
             if(remainingEnemiesToSpawn > 0)
             {
-                EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.GetDifficulty() ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;                             
+                EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.isNormalDifficulty ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;                             
                 enemies.Add(spawnedEnemy);
                 remainingEnemiesToSpawn--;                
             }            
@@ -125,7 +129,7 @@ public class SpawnController : MonoBehaviour
 
         public void SpawnBossEnemy(EnemyAI enemy)
         {
-            EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.GetDifficulty() ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;
+            EnemyAI spawnedEnemy = Instantiate(enemy, globalOptions.isNormalDifficulty ? new Vector2(0.5f, 12.5f) : new Vector2(ran.Next(-21, 40), ran.Next(-15, 3)), Quaternion.identity) as EnemyAI;
             Vector3 localScale = spawnedEnemy.gameObject.transform.localScale;
             spawnedEnemy.maxHealth = 3;
             spawnedEnemy.attackRadius = 4;
@@ -157,6 +161,11 @@ public class SpawnController : MonoBehaviour
     }
 
     private bool isDelayWaveExecuting = false;
+
+    public static SpawnController Instance => Instance1;
+
+    public static SpawnController Instance1 => _instance;
+
     IEnumerator DelayWave(float time, Action task)
     {
         if (isDelayWaveExecuting)

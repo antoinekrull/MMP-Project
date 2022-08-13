@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    [SerializeField] public AudioSource buttonSound;
     public static bool isNormalDifficulty = true;
     private GlobalOptions globalOptions = GlobalOptions.GetInstance();
+
     public void PlayGame()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
@@ -20,13 +20,8 @@ public class StartMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void PlayButtonSound()
-    {
-        buttonSound.Play();
-    }
-
     public void DifficultySelector()
     {
-        globalOptions.SetDifficulty(!globalOptions.GetDifficulty());        
+        globalOptions.isNormalDifficulty = !globalOptions.isNormalDifficulty;        
     }
 }
